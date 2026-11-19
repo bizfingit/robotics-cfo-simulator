@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BizFin | US Robotics Full-Time CFO Operating System</title>
+  <title>BizFin | US Robotics FP&A & Financial Engineering OS</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,29 +84,28 @@
         <div class="flex items-baseline space-x-2">
           <span class="font-semibold tracking-tight text-sm text-zinc-100">BIZFIN</span>
           <span class="text-zinc-600 text-xs">/</span>
-          <span class="font-mono text-xs text-zinc-400 tracking-wider uppercase">US Robotics CFO OS</span>
+          <span class="font-mono text-xs text-zinc-400 tracking-wider uppercase">US Robotics FP&A OS</span>
         </div>
       </div>
 
       <div class="flex items-center space-x-4">
         <span class="hidden md:inline-flex items-center px-2.5 py-1 rounded text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-          STRICTLY USA // DELAWARE C-CORP & GAAP
+          US HARDWARE & ROBOTICS FP&A DESK
         </span>
-        <a href="mailto:connect.bizfin@gmail.com?subject=US%20Robotics%20CFO%20Audit%20Request&body=Hi%20BizFin%20Team%2C%0A%0AWe%20are%20a%20US-based%20robotics%20startup%20and%20would%20like%20to%20request%20a%20custom%20Working%20Capital%20%26%20CFO%20Audit."
+        <a href="mailto:connect.bizfin@gmail.com?subject=US%20Robotics%20Working%20Capital%20Audit%20Request&body=Hi%20BizFin%20Team%2C%0A%0AWe%20are%20a%20US-based%20robotics%20startup%20and%20would%20like%20to%20request%20a%20custom%20Working%20Capital%20%26%20BOM%20Diagnostic."
            class="px-3.5 py-1.5 rounded text-xs font-medium bg-zinc-100 text-obsidian hover:bg-zinc-200 transition-colors">
-          Request US CFO Audit
+          Request Custom Diagnostic
         </a>
       </div>
     </div>
 
-    <!-- 6-Module Navigation Tabs -->
+    <!-- 5-Module Legally Safe Navigation Tabs -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-6 text-xs font-medium overflow-x-auto">
       <button onclick="switchTab('executive')" id="btn-executive" class="py-3 tab-active whitespace-nowrap transition-colors">01. Executive Board Memo</button>
       <button onclick="switchTab('simulator')" id="btn-simulator" class="py-3 tab-inactive whitespace-nowrap transition-colors">02. Capital & Runway Engine</button>
       <button onclick="switchTab('economics')" id="btn-economics" class="py-3 tab-inactive whitespace-nowrap transition-colors">03. BOM & Raw Materials</button>
-      <button onclick="switchTab('ustax')" id="btn-ustax" class="py-3 tab-inactive whitespace-nowrap transition-colors">04. US Tax, IRS & Compliance</button>
-      <button onclick="switchTab('strategy')" id="btn-strategy" class="py-3 tab-inactive whitespace-nowrap transition-colors">05. US Strategy & RaaS</button>
-      <button onclick="switchTab('deliverables')" id="btn-deliverables" class="py-3 tab-inactive whitespace-nowrap transition-colors">06. A-to-Z CFO Desk</button>
+      <button onclick="switchTab('strategy')" id="btn-strategy" class="py-3 tab-inactive whitespace-nowrap transition-colors">04. RaaS & Business Strategy</button>
+      <button onclick="switchTab('deliverables')" id="btn-deliverables" class="py-3 tab-inactive whitespace-nowrap transition-colors">05. A-to-Z FP&A Desk</button>
     </div>
   </header>
 
@@ -118,9 +117,9 @@
     <section id="tab-executive" class="space-y-6">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-borderSubtle pb-5">
         <div>
-          <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Confidential US Board Memorandum // Live Telemetry</p>
+          <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Management Reporting // Live FP&A Telemetry</p>
           <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Executive Financial & Strategic Dashboard</h1>
-          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Full-time US CFO synthesis covering GAAP liquidity, supply chain working capital, IRS R&D tax offsets, and cap table preservation. All narratives auto-update from Tabs 02–05.</p>
+          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">An internal management synthesis of cash runway, supply chain working capital, unit economics, and RaaS monetization. All narratives auto-update from Tabs 02–04.</p>
         </div>
         <div class="flex items-center space-x-3 no-print">
           <button onclick="switchTab('simulator')" class="px-3.5 py-2 rounded text-xs font-mono border border-emerald-500/30 bg-emerald-950/20 text-emerald-400 hover:bg-emerald-950/40 transition-colors">
@@ -144,18 +143,18 @@
           <p id="exec-bom" class="text-xl font-mono font-semibold text-zinc-100 mt-1">$6,870</p>
           <p id="exec-margin" class="text-[11px] font-mono text-emerald-400 mt-1">54.2% Gross Margin</p>
         </div>
+        <div class="p-4 rounded-lg border border-borderSubtle bg-surface print-card">
+          <p class="text-[10px] font-mono text-zinc-400 uppercase">Lowest Cash Trough</p>
+          <p id="exec-trough" class="text-xl font-mono font-semibold text-zinc-100 mt-1">$1,421,090</p>
+          <p class="text-[11px] font-mono text-zinc-500 mt-1">Real Bank Minimum</p>
+        </div>
         <div class="p-4 rounded-lg border border-rose-500/30 bg-rose-950/10 print-card">
           <p class="text-[10px] font-mono text-rose-400 uppercase">Trapped Capital</p>
           <p id="exec-trapped" class="text-xl font-mono font-semibold text-rose-400 mt-1">-$281,670</p>
           <p id="exec-lead-lbl" class="text-[11px] font-mono text-rose-400/70 mt-1">60-Day Supplier Lag</p>
         </div>
-        <div class="p-4 rounded-lg border border-borderSubtle bg-surface print-card">
-          <p class="text-[10px] font-mono text-zinc-400 uppercase">IRS R&D Tax Credit</p>
-          <p id="exec-rd-credit" class="text-xl font-mono font-semibold text-zinc-100 mt-1">+$90,000</p>
-          <p class="text-[11px] font-mono text-zinc-500 mt-1">Annual Payroll Offset</p>
-        </div>
         <div class="p-4 rounded-lg border border-emerald-500/30 bg-emerald-950/15 print-card col-span-2 lg:col-span-1">
-          <p class="text-[10px] font-mono text-emerald-400 uppercase">Total Cash Unlocked</p>
+          <p class="text-[10px] font-mono text-emerald-400 uppercase">Cash Unlocked</p>
           <p id="exec-unlocked" class="text-xl font-mono font-semibold text-emerald-400 mt-1">+$516,749</p>
           <p id="exec-equity" class="text-[11px] font-mono text-emerald-300/80 mt-1">4.31% Equity Saved</p>
         </div>
@@ -166,7 +165,7 @@
         <div class="p-6 rounded-lg border border-borderSubtle bg-surface space-y-3 print-card">
           <div class="flex items-center justify-between border-b border-borderSubtle pb-3">
             <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-200">01 // Executive Summary & Liquidity Posture</h2>
-            <span class="text-[10px] font-mono text-emerald-400">US GAAP VIEW</span>
+            <span class="text-[10px] font-mono text-emerald-400">MANAGEMENT FP&A</span>
           </div>
           <p id="para-summary" class="text-sm text-zinc-300 leading-relaxed print-text"></p>
         </div>
@@ -189,8 +188,8 @@
 
         <div class="p-6 rounded-lg border border-emerald-500/30 bg-emerald-950/10 space-y-3 print-card">
           <div class="flex items-center justify-between border-b border-emerald-500/20 pb-3">
-            <h2 class="text-xs font-mono uppercase tracking-wider text-emerald-400">04 // US Tax, RaaS & Cap Table Strategy</h2>
-            <span class="text-[10px] font-mono text-emerald-500/80">CFO RECOMMENDATION</span>
+            <h2 class="text-xs font-mono uppercase tracking-wider text-emerald-400">04 // RaaS Monetization & Capital Efficiency</h2>
+            <span class="text-[10px] font-mono text-emerald-500/80">STRATEGIC OUTLOOK</span>
           </div>
           <p id="para-capital-strategy" class="text-sm text-zinc-300 leading-relaxed print-text"></p>
         </div>
@@ -205,7 +204,7 @@
         <div>
           <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Interactive Financial Telemetry</p>
           <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Working Capital & Runway Stress-Test</h1>
-          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Quantify how supplier lead times trap bank liquidity during hardware scaling—and model the exact cash unlocked via BizFin financial engineering.</p>
+          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Quantify how supplier lead times trap bank liquidity during hardware scaling—and model the exact cash unlocked via working capital engineering.</p>
         </div>
         <div class="flex items-center space-x-3">
           <button onclick="switchTab('economics')" class="px-3.5 py-2 rounded text-xs font-mono border border-emerald-500/30 bg-emerald-950/20 text-emerald-400 hover:bg-emerald-950/40 transition-colors">
@@ -268,7 +267,7 @@
 
           <div class="p-5 rounded-lg border border-emerald-500/30 bg-emerald-950/10 space-y-4">
             <div class="flex items-center justify-between border-b border-emerald-500/20 pb-3">
-              <h2 class="text-xs font-mono uppercase tracking-wider text-emerald-400">BizFin CFO Levers</h2>
+              <h2 class="text-xs font-mono uppercase tracking-wider text-emerald-400">Working Capital Levers</h2>
               <span class="text-[10px] font-mono text-emerald-500/80">OPTIMIZATION</span>
             </div>
 
@@ -290,7 +289,7 @@
 
             <div>
               <div class="flex justify-between text-xs mb-1.5">
-                <label class="text-zinc-300">Implied Valuation (US Seed/A)</label>
+                <label class="text-zinc-300">Implied Valuation (Ref Only)</label>
                 <span id="val-valuation" class="font-mono text-zinc-200">$12.0M</span>
               </div>
               <input id="in-valuation" type="range" min="5" max="50" step="1" value="12" class="w-full lever" oninput="recalc()" />
@@ -326,12 +325,12 @@
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
               <div>
                 <h3 class="text-sm font-medium text-zinc-100">12-Month Liquidity Trajectory</h3>
-                <p class="text-xs text-zinc-400">Paper Forecast vs. Real Working Capital vs. BizFin Optimized Cash</p>
+                <p class="text-xs text-zinc-400">Paper Forecast vs. Real Working Capital vs. Optimized Cash</p>
               </div>
               <div class="flex items-center space-x-4 text-[11px] font-mono">
                 <span class="flex items-center text-zinc-400"><span class="w-2 h-2 rounded-full bg-zinc-500 mr-1.5"></span>Paper</span>
                 <span class="flex items-center text-rose-400"><span class="w-2 h-2 rounded-full bg-rose-500 mr-1.5"></span>Status Quo</span>
-                <span class="flex items-center text-emerald-400"><span class="w-2 h-2 rounded-full bg-emerald-500 mr-1.5"></span>BizFin CFO</span>
+                <span class="flex items-center text-emerald-400"><span class="w-2 h-2 rounded-full bg-emerald-500 mr-1.5"></span>Optimized</span>
               </div>
             </div>
             <div class="h-72 w-full">
@@ -360,7 +359,7 @@
                 <th class="py-2.5 px-4 text-right">Revenue</th>
                 <th class="py-2.5 px-4 text-right">Paper Cash</th>
                 <th class="py-2.5 px-4 text-right text-rose-400">Real Cash (Status Quo)</th>
-                <th class="py-2.5 px-4 text-right text-emerald-400">BizFin CFO Cash</th>
+                <th class="py-2.5 px-4 text-right text-emerald-400">Optimized Cash</th>
                 <th class="py-2.5 px-4 text-right">Liquidity Delta</th>
               </tr>
             </thead>
@@ -378,7 +377,7 @@
         <div>
           <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Interactive Bill of Materials (BOM) Engine</p>
           <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Raw Material Selection & Unit Costing</h1>
-          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Add multiple robotics raw materials, adjust quantities, unit costs, and supplier lead times. Totals automatically sync across the entire CFO OS.</p>
+          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Add multiple robotics raw materials, adjust quantities, unit costs, and supplier lead times. Totals automatically sync across the entire FP&A OS.</p>
         </div>
         <button onclick="switchTab('executive')" class="px-3.5 py-2 rounded text-xs font-mono bg-zinc-100 text-obsidian hover:bg-zinc-200 transition-colors">
           View Executive Memo →
@@ -460,106 +459,15 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- TAB 4: US TAX, IRS & COMPLIANCE SUITE      -->
-    <!-- ========================================== -->
-    <section id="tab-ustax" class="hidden space-y-6">
-      <div class="border-b border-borderSubtle pb-5">
-        <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Strictly USA // Federal IRS, Delaware C-Corp & US GAAP</p>
-        <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">US Tax Credit Engine & Statutory Compliance</h1>
-        <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Everything a full-time US startup CFO manages for federal tax optimization, IRS Section 174 compliance, and Delaware C-Corp governance.</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <!-- IRS R&D Tax Credit Calculator -->
-        <div class="lg:col-span-6 p-6 rounded-lg border border-borderSubtle bg-surface space-y-5">
-          <div class="flex items-center justify-between border-b border-borderSubtle pb-3">
-            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-200">IRS Federal R&D Tax Credit Calculator (Form 6765)</h2>
-            <span class="text-[10px] font-mono text-emerald-400">IRA $500K CAP</span>
-          </div>
-
-          <div class="space-y-4">
-            <div>
-              <div class="flex justify-between text-xs mb-1.5">
-                <label class="text-zinc-400">Annual US R&D Engineering Payroll</label>
-                <span id="val-rd-payroll" class="font-mono text-zinc-100">$900,000</span>
-              </div>
-              <input id="in-rd-payroll" type="range" min="100000" max="5000000" step="50000" value="900000" class="w-full lever" oninput="recalcUS()" />
-            </div>
-            <div>
-              <div class="flex justify-between text-xs mb-1.5">
-                <label class="text-zinc-400">Annual US Prototype Supplies & Cloud</label>
-                <span id="val-rd-supplies" class="font-mono text-zinc-100">$150,000</span>
-              </div>
-              <input id="in-rd-supplies" type="range" min="0" max="1000000" step="25000" value="150000" class="w-full lever" oninput="recalcUS()" />
-            </div>
-          </div>
-
-          <div class="grid grid-cols-2 gap-4 pt-2">
-            <div class="p-4 rounded border border-emerald-500/30 bg-emerald-950/15">
-              <p class="text-[10px] font-mono text-emerald-400 uppercase">Est. Annual Cash Offset</p>
-              <p id="out-rd-credit" class="text-2xl font-mono font-semibold text-emerald-400 mt-1">$105,000</p>
-              <p class="text-[10px] font-mono text-zinc-400 mt-1">Offsets FICA Payroll Tax</p>
-            </div>
-            <div class="p-4 rounded border border-borderSubtle bg-obsidian/60">
-              <p class="text-[10px] font-mono text-zinc-400 uppercase">Section 174 Amortization</p>
-              <p id="out-sec174" class="text-2xl font-mono font-semibold text-zinc-100 mt-1">5 Years</p>
-              <p class="text-[10px] font-mono text-zinc-500 mt-1">US Domestic R&D (vs 15 Yr Foreign)</p>
-            </div>
-          </div>
-          <p class="text-xs text-zinc-400 leading-relaxed">Under the US Inflation Reduction Act, Qualified Small Businesses (<$5M gross receipts) can offset up to <strong class="text-zinc-200">$500,000/year</strong> in federal employer payroll taxes (Social Security & Medicare) directly against qualifying US robotics R&D.</p>
-        </div>
-
-        <!-- Delaware C-Corp & GAAP Compliance Checklist -->
-        <div class="lg:col-span-6 p-6 rounded-lg border border-borderSubtle bg-surface space-y-4">
-          <div class="flex items-center justify-between border-b border-borderSubtle pb-3">
-            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-200">US Statutory & Delaware C-Corp Calendar</h2>
-            <span class="text-[10px] font-mono text-zinc-500">INTERACTIVE TRACKER</span>
-          </div>
-          <div class="space-y-3 text-xs">
-            <label class="flex items-start space-x-3 p-3 rounded border border-borderSubtle bg-obsidian/40 cursor-pointer hover:border-zinc-600">
-              <input type="checkbox" checked class="mt-0.5 accent-emerald-500">
-              <div>
-                <p class="font-medium text-zinc-200">Delaware Franchise Tax (Assumed Par Value Method)</p>
-                <p class="text-zinc-500 mt-0.5">Due March 1 annually. Always recalculate via Assumed Par Value to avoid $50k+ default bills.</p>
-              </div>
-            </label>
-            <label class="flex items-start space-x-3 p-3 rounded border border-borderSubtle bg-obsidian/40 cursor-pointer hover:border-zinc-600">
-              <input type="checkbox" checked class="mt-0.5 accent-emerald-500">
-              <div>
-                <p class="font-medium text-zinc-200">IRS Form 1120 (Federal Corporate Return) + Form 6765</p>
-                <p class="text-zinc-500 mt-0.5">Due April 15 (or Oct 15 on extension). Required to lock in quarterly R&D payroll tax credits.</p>
-              </div>
-            </label>
-            <label class="flex items-start space-x-3 p-3 rounded border border-borderSubtle bg-obsidian/40 cursor-pointer hover:border-zinc-600">
-              <input type="checkbox" class="mt-0.5 accent-emerald-500">
-              <div>
-                <p class="font-medium text-zinc-200">IRC Section 409A Valuation & 83(b) Elections</p>
-                <p class="text-zinc-500 mt-0.5">Refresh 409A every 12 months or post-financing before issuing US employee ISO/NSO stock options.</p>
-              </div>
-            </label>
-            <label class="flex items-start space-x-3 p-3 rounded border border-borderSubtle bg-obsidian/40 cursor-pointer hover:border-zinc-600">
-              <input type="checkbox" class="mt-0.5 accent-emerald-500">
-              <div>
-                <p class="font-medium text-zinc-200">US Multi-State Sales Tax Nexus (Wayfair Thresholds)</p>
-                <p class="text-zinc-500 mt-0.5">Monitor $100k revenue / 200 transaction thresholds per US state for physical robotics hardware shipments.</p>
-              </div>
-            </label>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================== -->
-    <!-- TAB 5: US BUSINESS STRATEGY & RaaS ENGINE  -->
+    <!-- TAB 4: RaaS & BUSINESS STRATEGY            -->
     <!-- ========================================== -->
     <section id="tab-strategy" class="hidden space-y-6">
       <div class="border-b border-borderSubtle pb-5">
         <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">US Robotics Business Strategy & Monetization</p>
-        <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">CapEx vs. RaaS (Robotics-as-a-Service) & US Grants</h1>
-        <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Compare upfront hardware sales against recurring RaaS subscriptions to maximize US Series A valuation multiples, plus non-dilutive federal grant playbooks.</p>
+        <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">CapEx vs. RaaS (Robotics-as-a-Service) Modeler</h1>
+        <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Compare upfront hardware sales against recurring RaaS subscriptions to optimize unit payback, lifetime value (LTV), and supply chain cash conversion.</p>
       </div>
 
-      <!-- CapEx vs RaaS Simulator -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div class="lg:col-span-5 p-6 rounded-lg border border-borderSubtle bg-surface space-y-4">
           <div class="flex items-center justify-between border-b border-borderSubtle pb-3">
@@ -571,21 +479,21 @@
               <label class="text-zinc-400">Monthly RaaS Fee / Robot</label>
               <span id="val-raas-fee" class="font-mono text-emerald-400">$1,200/mo</span>
             </div>
-            <input id="in-raas-fee" type="range" min="400" max="5000" step="100" value="1200" class="w-full lever" oninput="recalcUS()" />
+            <input id="in-raas-fee" type="range" min="400" max="5000" step="100" value="1200" class="w-full lever" oninput="recalc()" />
           </div>
           <div>
             <div class="flex justify-between text-xs mb-1.5">
               <label class="text-zinc-400">Contract Length (Months)</label>
               <span id="val-raas-term" class="font-mono text-zinc-100">36 Months</span>
             </div>
-            <input id="in-raas-term" type="range" min="12" max="60" step="6" value="36" class="w-full lever" oninput="recalcUS()" />
+            <input id="in-raas-term" type="range" min="12" max="60" step="6" value="36" class="w-full lever" oninput="recalc()" />
           </div>
           <div>
             <div class="flex justify-between text-xs mb-1.5">
               <label class="text-zinc-400">Monthly Maintenance & Cloud / Robot</label>
               <span id="val-raas-maint" class="font-mono text-zinc-100">$150/mo</span>
             </div>
-            <input id="in-raas-maint" type="range" min="50" max="500" step="25" value="150" class="w-full" oninput="recalcUS()" />
+            <input id="in-raas-maint" type="range" min="50" max="500" step="25" value="150" class="w-full" oninput="recalc()" />
           </div>
         </div>
 
@@ -596,7 +504,7 @@
               <p id="out-capex-ltv" class="text-2xl font-mono font-semibold text-zinc-100 mt-2">$15,000</p>
               <p class="text-xs text-zinc-500 mt-1">1x Revenue per Robot</p>
             </div>
-            <div class="pt-4 border-t border-borderSubtle text-[11px] font-mono text-zinc-400">US VC Multiple: 3x–5x Rev</div>
+            <div class="pt-4 border-t border-borderSubtle text-[11px] font-mono text-zinc-400">Immediate Cash Inflow</div>
           </div>
 
           <div class="p-5 rounded-lg border border-emerald-500/30 bg-emerald-950/10 flex flex-col justify-between">
@@ -605,7 +513,7 @@
               <p id="out-raas-ltv" class="text-2xl font-mono font-semibold text-emerald-400 mt-2">$43,200</p>
               <p id="out-raas-margin" class="text-xs font-mono text-emerald-300/80 mt-1">71.6% Net RaaS Margin</p>
             </div>
-            <div class="pt-4 border-t border-emerald-500/20 text-[11px] font-mono text-emerald-400">US VC Multiple: 8x–12x ARR</div>
+            <div class="pt-4 border-t border-emerald-500/20 text-[11px] font-mono text-emerald-400">Recurring ARR Profile</div>
           </div>
 
           <div class="p-5 rounded-lg border border-borderSubtle bg-surface flex flex-col justify-between">
@@ -614,54 +522,54 @@
               <p id="out-raas-payback" class="text-2xl font-mono font-semibold text-zinc-100 mt-2">6.5 Months</p>
               <p class="text-xs text-zinc-500 mt-1">Time to recover Unit BOM</p>
             </div>
-            <div class="pt-4 border-t border-borderSubtle text-[11px] font-mono text-zinc-400">Target: < 9 Months</div>
+            <div class="pt-4 border-t border-borderSubtle text-[11px] font-mono text-zinc-400">Benchmark: < 9 Months</div>
           </div>
         </div>
       </div>
 
-      <!-- US Strategic Playbooks -->
+      <!-- Operational & Working Capital Playbooks -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div class="p-5 rounded-lg border border-borderSubtle bg-surface space-y-2.5">
-          <span class="text-[10px] font-mono text-emerald-400 uppercase">Strategy 01 // Non-Dilutive</span>
-          <h3 class="text-sm font-semibold text-zinc-100">US DoD / NSF SBIR & STTR Grants</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed">US-owned robotics startups can secure $275k (Phase I) to $1.8M+ (Phase II) in 100% non-dilutive federal R&D funding via NSF, AFWERX, and DoD contracts—requiring DCAA-compliant timekeeping and chart of accounts.</p>
+          <span class="text-[10px] font-mono text-emerald-400 uppercase">Playbook 01 // Cash Conversion</span>
+          <h3 class="text-sm font-semibold text-zinc-100">Deposit-Funded Manufacturing</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">Structure B2B pilot and fleet contracts with 30%–50% upfront deposits upon Purchase Order to self-fund raw material procurement and eliminate cash troughs.</p>
         </div>
         <div class="p-5 rounded-lg border border-borderSubtle bg-surface space-y-2.5">
-          <span class="text-[10px] font-mono text-emerald-400 uppercase">Strategy 02 // Asset Debt</span>
-          <h3 class="text-sm font-semibold text-zinc-100">RaaS Fleet Equipment Financing</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed">Never fund deployed RaaS robots with expensive Seed equity. Once payback is under 9 months, structure US SPV equipment credit lines (80% advance rate on BOM) to scale fleets with zero dilution.</p>
+          <span class="text-[10px] font-mono text-emerald-400 uppercase">Playbook 02 // Procurement</span>
+          <h3 class="text-sm font-semibold text-zinc-100">Net-60 Supplier Restructuring</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">Transition key actuator, sensor, and battery vendors from 100% upfront wire transfers to milestone-based terms (30% PO / 70% Net-60 post-delivery).</p>
         </div>
         <div class="p-5 rounded-lg border border-borderSubtle bg-surface space-y-2.5">
-          <span class="text-[10px] font-mono text-emerald-400 uppercase">Strategy 03 // Supply Chain</span>
-          <h3 class="text-sm font-semibold text-zinc-100">Section 301 Tariff & Nearshoring</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed">Audit HTS codes on imported actuators, LiDAR, and PCBs to mitigate 25%+ US Section 301 tariffs via Mexico/Taiwan secondary sourcing and Duty Drawback programs.</p>
+          <span class="text-[10px] font-mono text-emerald-400 uppercase">Playbook 03 // Unit Economics</span>
+          <h3 class="text-sm font-semibold text-zinc-100">Volume Tiering & BOM Compression</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">Model price breaks at 50, 100, and 500-unit production runs to systematically compress top-3 BOM components by 10%–20% without sacrificing hardware reliability.</p>
         </div>
       </div>
     </section>
 
     <!-- ========================================== -->
-    <!-- TAB 6: A-TO-Z CFO DESK                     -->
+    <!-- TAB 5: A-TO-Z FP&A DESK                    -->
     <!-- ========================================== -->
     <section id="tab-deliverables" class="hidden space-y-8">
       <div class="border-b border-borderSubtle pb-5">
-        <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">A-to-Z Fractional CFO Execution</p>
+        <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">A-to-Z Fractional FP&A Execution</p>
         <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Engagement Architecture & Deliverables</h1>
-        <p class="text-sm text-zinc-400 mt-1 max-w-2xl">We operate as an asynchronous, automated Financial Engineering Desk exclusively for US robotics startups—delivering full-time CFO firepower without $250k+ executive overhead.</p>
+        <p class="text-sm text-zinc-400 mt-1 max-w-2xl">We operate as an asynchronous, automated Financial Planning & Analysis (FP&A) Desk for US robotics startups—working seamlessly alongside your US CPA and legal counsel.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="p-6 rounded-lg border border-borderSubtle bg-surface flex flex-col justify-between">
           <div>
             <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-800 text-zinc-300">PHASE 01 // DAYS 1–30</span>
-            <h3 class="text-base font-semibold text-zinc-100 mt-3">Forensic Audit & Architecture</h3>
+            <h3 class="text-base font-semibold text-zinc-100 mt-3">Diagnostic & Model Architecture</h3>
             <ul class="mt-4 space-y-2.5 text-xs text-zinc-400">
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Line-by-line BOM & US Assembly Labor Cost Audit</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Line-by-line BOM & Assembly Labor Cost Analysis</span></li>
               <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Supplier Lead Time & Working Capital Trap Map</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>US GAAP separation of R&D OpEx vs. Hardware COGS</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>IRS R&D Tax Credit & Delaware C-Corp Compliance Review</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Management separation of R&D OpEx vs. Hardware COGS</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Custom 12-Month & 36-Month Dynamic Cash Flow Model</span></li>
             </ul>
           </div>
-          <div class="mt-6 pt-4 border-t border-borderSubtle text-[11px] font-mono text-zinc-500">DELIVERABLE: FULL CFO DIAGNOSTIC + MODEL</div>
+          <div class="mt-6 pt-4 border-t border-borderSubtle text-[11px] font-mono text-zinc-500">DELIVERABLE: FULL FP&A DIAGNOSTIC + MODEL</div>
         </div>
 
         <div class="p-6 rounded-lg border border-emerald-500/30 bg-surface flex flex-col justify-between">
@@ -670,36 +578,36 @@
             <h3 class="text-base font-semibold text-zinc-100 mt-3">Automation & Live Telemetry</h3>
             <ul class="mt-4 space-y-2.5 text-xs text-zinc-400">
               <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>24/7 Live Cash Runway & Burn Rate Executive Portal</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Automated QuickBooks Online / NetSuite / ERP pipeline</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Automated management reporting from QuickBooks / ERP</span></li>
               <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Weekly Async Founder Memo (Cash Trough & Variance)</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Customer Deposit & Net-60 Vendor Negotiation Scripts</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Customer Deposit & Net-60 Vendor Negotiation Models</span></li>
             </ul>
           </div>
-          <div class="mt-6 pt-4 border-t border-borderSubtle text-[11px] font-mono text-emerald-400/80">DELIVERABLE: LIVE AUTOMATED CFO DESK</div>
+          <div class="mt-6 pt-4 border-t border-borderSubtle text-[11px] font-mono text-emerald-400/80">DELIVERABLE: LIVE AUTOMATED FP&A DESK</div>
         </div>
 
         <div class="p-6 rounded-lg border border-borderSubtle bg-surface flex flex-col justify-between">
           <div>
             <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-800 text-zinc-300">PHASE 03 // DAYS 61–90+</span>
-            <h3 class="text-base font-semibold text-zinc-100 mt-3">Scale & Institutional Capital</h3>
+            <h3 class="text-base font-semibold text-zinc-100 mt-3">Scale & Investor Readiness</h3>
             <ul class="mt-4 space-y-2.5 text-xs text-zinc-400">
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>US Series A Investor Data Room & Board Reporting Deck</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>RaaS Fleet Financing & Venture Debt Modeling</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>DCAA / SBIR Federal Grant Accounting Architecture</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Ongoing Monthly Fractional CFO Retainer Support</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Investor-Ready Financial Data Room & Board Slides</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>RaaS Fleet Unit Economics & Factory Scaling Scenarios</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Clean data handoff & coordination with your US CPA</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Ongoing Flat-Fee Monthly Strategic FP&A Retainer</span></li>
             </ul>
           </div>
-          <div class="mt-6 pt-4 border-t border-borderSubtle text-[11px] font-mono text-zinc-500">DELIVERABLE: SERIES A & DEBT READINESS</div>
+          <div class="mt-6 pt-4 border-t border-borderSubtle text-[11px] font-mono text-zinc-500">DELIVERABLE: SERIES A FINANCIAL READINESS</div>
         </div>
       </div>
 
       <div class="p-8 rounded-lg border border-borderSubtle bg-gradient-to-r from-surface via-zinc-900 to-surface flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div>
-          <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest">Complimentary US Diagnostic</p>
-          <h2 class="text-xl font-semibold text-zinc-100 mt-1">Get a Custom Working Capital & Tax Audit</h2>
-          <p class="text-xs text-zinc-400 mt-1.5 max-w-xl">Send us your baseline BOM, OpEx, and lead time assumptions. Within 48 hours, our desk will return a private, institutional-grade 12-month liquidity diagnostic—zero commitment.</p>
+          <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest">Complimentary Diagnostic</p>
+          <h2 class="text-xl font-semibold text-zinc-100 mt-1">Get a Custom Working Capital & BOM Diagnostic</h2>
+          <p class="text-xs text-zinc-400 mt-1.5 max-w-xl">Send us your baseline BOM, OpEx, and lead time assumptions. Within 48 hours, our desk will return a private 12-month liquidity diagnostic—zero commitment.</p>
         </div>
-        <a href="mailto:connect.bizfin@gmail.com?subject=US%20Robotics%20CFO%20Audit%20Request&body=Hi%20BizFin%20Team%2C%0A%0AI%20explored%20the%20US%20Robotics%20CFO%20OS%20and%20would%20like%20to%20request%20a%20custom%20Working%20Capital%20Audit%20for%20our%20startup."
+        <a href="mailto:connect.bizfin@gmail.com?subject=US%20Robotics%20Working%20Capital%20Diagnostic%20Request&body=Hi%20BizFin%20Team%2C%0A%0AI%20explored%20the%20US%20Robotics%20FP%26A%20OS%20and%20would%20like%20to%20request%20a%20custom%20Working%20Capital%20Diagnostic%20for%20our%20startup."
            class="px-5 py-2.5 rounded text-xs font-semibold bg-zinc-100 text-obsidian hover:bg-zinc-200 transition-colors text-center shrink-0">
           Email connect.bizfin@gmail.com
         </a>
@@ -707,10 +615,15 @@
     </section>
   </main>
 
-  <footer class="border-t border-borderSubtle mt-12 py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-zinc-500 gap-2">
-      <span>© 2026 BIZFIN FINANCIAL ENGINEERING // STRICTLY US HARDWARE & ROBOTICS.</span>
-      <a href="mailto:connect.bizfin@gmail.com" class="hover:text-zinc-300 transition-colors">connect.bizfin@gmail.com</a>
+  <footer class="border-t border-borderSubtle mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      <div class="flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-zinc-400 gap-2">
+        <span>© 2026 BIZFIN FINANCIAL ENGINEERING // US HARDWARE & ROBOTICS FP&A.</span>
+        <a href="mailto:connect.bizfin@gmail.com" class="hover:text-zinc-200 transition-colors">connect.bizfin@gmail.com</a>
+      </div>
+      <p class="text-[10px] text-zinc-600 leading-relaxed">
+        <strong>Disclaimer:</strong> BizFin provides Financial Planning & Analysis (FP&A), financial modeling, unit economics analysis, and strategic management consulting. BizFin is not a licensed Certified Public Accounting (CPA) firm, law firm, registered investment advisor, or FINRA broker-dealer, and does not provide statutory audits, tax preparation, legal advice, or securities brokerage services. Clients should consult their licensed US CPA and legal counsel for tax filings, statutory compliance, and legal matters.
+      </p>
     </div>
   </footer>
 
@@ -735,7 +648,7 @@
     };
 
     function switchTab(tabId) {
-      ['executive', 'simulator', 'economics', 'ustax', 'strategy', 'deliverables'].forEach(t => {
+      ['executive', 'simulator', 'economics', 'strategy', 'deliverables'].forEach(t => {
         document.getElementById('tab-' + t).classList.toggle('hidden', t !== tabId);
         const btn = document.getElementById('btn-' + t);
         btn.classList.toggle('tab-active', t === tabId);
@@ -811,18 +724,17 @@
       recalc();
     }
 
-    function recalcUS() {
-      const rdPayroll = +document.getElementById('in-rd-payroll').value;
-      const rdSupplies = +document.getElementById('in-rd-supplies').value;
-      const rdCredit = Math.min(500000, (rdPayroll + rdSupplies) * 0.10);
-
-      document.getElementById('val-rd-payroll').textContent = fmtUSD(rdPayroll);
-      document.getElementById('val-rd-supplies').textContent = fmtUSD(rdSupplies);
-      document.getElementById('out-rd-credit').textContent = fmtUSD(rdCredit);
-      document.getElementById('exec-rd-credit').textContent = '+' + fmtUSD(rdCredit);
-
+    function recalc() {
+      const startCash = +document.getElementById('in-cash').value;
       const bom = +document.getElementById('in-bom').value;
       const price = +document.getElementById('in-price').value;
+      const opex = +document.getElementById('in-opex').value;
+      const leadMo = +document.getElementById('in-lead').value;
+      const bomOptPct = +document.getElementById('in-bom-opt').value;
+      const depositPct = +document.getElementById('in-deposit').value;
+      const valuationM = +document.getElementById('in-valuation').value;
+
+      // RaaS calculations
       const raasFee = +document.getElementById('in-raas-fee').value;
       const raasTerm = +document.getElementById('in-raas-term').value;
       const raasMaint = +document.getElementById('in-raas-maint').value;
@@ -842,21 +754,7 @@
       document.getElementById('out-raas-margin').textContent = `${raasMargin.toFixed(1)}% Net RaaS Margin`;
       document.getElementById('out-raas-payback').textContent = netMonthly > 0 ? `${payback.toFixed(1)} Months` : 'N/A';
 
-      return { rdCredit, raasLTV, payback };
-    }
-
-    function recalc() {
-      const startCash = +document.getElementById('in-cash').value;
-      const bom = +document.getElementById('in-bom').value;
-      const price = +document.getElementById('in-price').value;
-      const opex = +document.getElementById('in-opex').value;
-      const leadMo = +document.getElementById('in-lead').value;
-      const bomOptPct = +document.getElementById('in-bom-opt').value;
-      const depositPct = +document.getElementById('in-deposit').value;
-      const valuationM = +document.getElementById('in-valuation').value;
-
-      const usMetrics = recalcUS();
-
+      // Baseline labels
       document.getElementById('val-cash').textContent = fmtUSD(startCash);
       document.getElementById('val-bom').textContent = fmtUSD(bom);
       document.getElementById('val-price').textContent = fmtUSD(price);
@@ -915,33 +813,36 @@
 
       const trapped = realCash - paperCash;
       const unlocked = cfoCash - realCash;
-      const equitySaved = Math.max(0, ((unlocked + usMetrics.rdCredit) / (valuationM * 1000000)) * 100);
+      const equitySaved = Math.max(0, (unlocked / (valuationM * 1000000)) * 100);
       const totalUnits = salesSchedule.reduce((a, b) => a + b, 0);
       const totalRev = totalUnits * price;
       const annualBomSavings = (bom - optBom) * totalUnits;
       const bottleneckItem = bomItems.reduce((prev, curr) => (curr.lead > prev.lead ? curr : prev), bomItems[0]);
 
+      // Update Tab 1 Executive Dashboard
       document.getElementById('exec-start-cash').textContent = fmtUSD(startCash);
       document.getElementById('exec-burn').textContent = `${fmtUSD(opex)}/mo OpEx`;
       document.getElementById('exec-bom').textContent = fmtUSD(bom);
       document.getElementById('exec-margin').textContent = `${margin.toFixed(1)}% Gross Margin`;
+      document.getElementById('exec-trough').textContent = fmtUSD(minRealCash);
       document.getElementById('exec-trapped').textContent = fmtUSD(trapped);
       document.getElementById('exec-lead-lbl').textContent = `${leadMo * 30}-Day Supplier Lag`;
       document.getElementById('exec-unlocked').textContent = (unlocked >= 0 ? '+' : '') + fmtUSD(unlocked);
       document.getElementById('exec-equity').textContent = `${equitySaved.toFixed(2)}% Equity Saved`;
 
       document.getElementById('para-summary').innerHTML =
-        `Operating as a US Delaware C-Corp with <strong class="text-zinc-100">${fmtUSD(startCash)}</strong> in starting cash and <strong class="text-zinc-100">${fmtUSD(opex)}/mo</strong> in fixed R&D and facility OpEx, the company requires <strong class="text-zinc-100">${breakeven.toFixed(1)} units/month</strong> for cash-flow break-even. Across the projected 12-month ramp of ${totalUnits} units (${fmtUSD(totalRev)} top-line revenue), actual bank liquidity hits its lowest trough of <strong class="text-zinc-100">${fmtUSD(minRealCash)}</strong> in <strong class="text-zinc-100">${troughMonth}</strong> before turning cash-flow positive.`;
+        `Operating from a starting bank balance of <strong class="text-zinc-100">${fmtUSD(startCash)}</strong> with <strong class="text-zinc-100">${fmtUSD(opex)}/mo</strong> in fixed R&D and facility OpEx, the business requires <strong class="text-zinc-100">${breakeven.toFixed(1)} units/month</strong> to reach operational cash-flow break-even. Across the projected 12-month ramp of ${totalUnits} units (${fmtUSD(totalRev)} top-line revenue), real bank liquidity reaches its lowest trough of <strong class="text-zinc-100">${fmtUSD(minRealCash)}</strong> in <strong class="text-zinc-100">${troughMonth}</strong> before transitioning to self-sustaining cash flow.`;
 
       document.getElementById('para-wc-risk').innerHTML =
-        `While US GAAP accrual accounting forecasts a Month 12 balance of <strong class="text-zinc-100">${fmtUSD(paperCash)}</strong>, hardware procurement creates a severe liquidity lag. Driven by a <strong class="text-rose-400">${leadMo * 30}-day</strong> advance payment cycle (bottlenecked by <strong class="text-zinc-100">${bottleneckItem ? bottleneckItem.name : 'core components'}</strong>), real bank cash drops to <strong class="text-rose-400">${fmtUSD(realCash)}</strong>—leaving <strong class="text-rose-400">${fmtUSD(Math.abs(trapped))}</strong> trapped in working capital.`;
+        `While standard accrual projections forecast a Month 12 balance of <strong class="text-zinc-100">${fmtUSD(paperCash)}</strong>, hardware procurement creates a severe liquidity lag. Driven by a <strong class="text-rose-400">${leadMo * 30}-day</strong> advance payment cycle (bottlenecked by <strong class="text-zinc-100">${bottleneckItem ? bottleneckItem.name : 'core components'}</strong>), actual bank liquidity drops to <strong class="text-rose-400">${fmtUSD(realCash)}</strong>—leaving <strong class="text-rose-400">${fmtUSD(Math.abs(trapped))}</strong> trapped in working capital.`;
 
       document.getElementById('para-bom-mandate').innerHTML =
-        `Current hardware economics deliver a <strong class="text-zinc-100">${margin.toFixed(1)}% Gross Margin</strong> (${fmtUSD(grossProfit)}/unit on a ${fmtUSD(bom)} BOM across ${bomItems.length} raw materials). Compressing BOM by <strong class="text-emerald-400">${bomOptPct}%</strong> to <strong class="text-emerald-400">${fmtUSD(optBom)}</strong> via supplier tiering and Section 301 tariff mitigation expands Gross Margin to <strong class="text-emerald-400">${optMargin.toFixed(1)}%</strong>, adding <strong class="text-emerald-400">+${fmtUSD(annualBomSavings)}</strong> in pure Year 1 profit.`;
+        `Current hardware economics deliver a <strong class="text-zinc-100">${margin.toFixed(1)}% Gross Margin</strong> (${fmtUSD(grossProfit)}/unit on a ${fmtUSD(bom)} BOM across ${bomItems.length} raw materials). Compressing BOM by <strong class="text-emerald-400">${bomOptPct}%</strong> to <strong class="text-emerald-400">${fmtUSD(optBom)}</strong> via supplier volume tiering expands Gross Margin to <strong class="text-emerald-400">${optMargin.toFixed(1)}%</strong>, adding <strong class="text-emerald-400">+${fmtUSD(annualBomSavings)}</strong> in Year 1 gross profit.`;
 
       document.getElementById('para-capital-strategy').innerHTML =
-        `Layering <strong class="text-emerald-400">${bomOptPct}% BOM optimization</strong>, <strong class="text-emerald-400">${depositPct}% upfront deposits</strong>, and <strong class="text-emerald-400">${fmtUSD(usMetrics.rdCredit)}</strong> in IRS Federal R&D Payroll Tax Credits unlocks <strong class="text-emerald-400">${fmtUSD(unlocked + usMetrics.rdCredit)}</strong> in non-dilutive liquidity—protecting <strong class="text-emerald-400">${equitySaved.toFixed(2)}% in founder equity</strong> at a $${valuationM}M valuation. Transitioning to a RaaS model (${usMetrics.payback.toFixed(1)}-mo BOM payback, ${fmtUSD(usMetrics.raasLTV)} LTV) further positions the company for 8x–12x ARR Series A multiples.`;
+        `Combining <strong class="text-emerald-400">${bomOptPct}% BOM optimization</strong> with <strong class="text-emerald-400">${depositPct}% upfront customer deposits</strong> elevates Month 12 real bank cash to <strong class="text-emerald-400">${fmtUSD(cfoCash)}</strong>—unlocking <strong class="text-emerald-400">${fmtUSD(unlocked)}</strong> in internal liquidity (equivalent to <strong class="text-emerald-400">${equitySaved.toFixed(2)}% founder equity</strong> at a $${valuationM}M reference valuation). Layering a RaaS subscription model (${payback.toFixed(1)}-month BOM payback, ${fmtUSD(raasLTV)} LTV) further maximizes recurring revenue efficiency.`;
 
+      // Update Tab 2 & 3 KPIs
       document.getElementById('kpi-margin').textContent = `${margin.toFixed(1)}%`;
       document.getElementById('kpi-margin-opt').textContent = `${optMargin.toFixed(1)}% Optimized`;
       document.getElementById('kpi-breakeven').textContent = grossProfit > 0 ? `${breakeven.toFixed(1)}/mo` : 'N/A';
@@ -955,7 +856,7 @@
       document.getElementById('econ-equity').textContent = `${equitySaved.toFixed(2)}%`;
 
       document.getElementById('diagnostic-text').innerHTML =
-        `<strong class="text-zinc-100">US CFO Diagnostic:</strong> A <span class="font-mono text-rose-400">${leadMo * 30}-day</span> lead time traps <span class="font-mono text-rose-400">${fmtUSD(Math.abs(trapped))}</span> in working capital. Executing <span class="font-mono text-emerald-400">${bomOptPct}% BOM optimization</span> + <span class="font-mono text-emerald-400">${depositPct}% upfront deposits</span> + <span class="font-mono text-emerald-400">${fmtUSD(usMetrics.rdCredit)} IRS R&D Tax Credit</span> protects <span class="font-mono text-zinc-100">${equitySaved.toFixed(2)}%</span> in founder equity.`;
+        `<strong class="text-zinc-100">FP&A Diagnostic:</strong> A <span class="font-mono text-rose-400">${leadMo * 30}-day</span> lead time traps <span class="font-mono text-rose-400">${fmtUSD(Math.abs(trapped))}</span> in working capital. Executing <span class="font-mono text-emerald-400">${bomOptPct}% BOM optimization</span> + <span class="font-mono text-emerald-400">${depositPct}% upfront deposits</span> unlocks <span class="font-mono text-emerald-400">${fmtUSD(unlocked)}</span> in liquid bank cash.`;
 
       const tbody = document.getElementById('ledger-body');
       tbody.innerHTML = ledgerData.map(r => `
@@ -979,7 +880,7 @@
           datasets: [
             { label: 'Paper Forecast', data: paperArr, borderColor: '#71717A', borderDash: [4, 4], borderWidth: 1.5, pointRadius: 0, tension: 0.3 },
             { label: 'Status Quo Real Cash', data: realArr, borderColor: '#F43F5E', backgroundColor: 'rgba(244,63,94,0.06)', fill: true, borderWidth: 2, pointRadius: 2, tension: 0.3 },
-            { label: 'BizFin CFO Optimized', data: cfoArr, borderColor: '#10B981', backgroundColor: 'rgba(16,185,129,0.08)', fill: true, borderWidth: 2.5, pointRadius: 2.5, tension: 0.3 }
+            { label: 'Optimized Cash', data: cfoArr, borderColor: '#10B981', backgroundColor: 'rgba(16,185,129,0.08)', fill: true, borderWidth: 2.5, pointRadius: 2.5, tension: 0.3 }
           ]
         },
         options: {
@@ -1013,14 +914,14 @@
     }
 
     function downloadCSV() {
-      const headers = ['Month', 'Units Sold', 'Revenue (USD)', 'Paper Forecast Cash (USD)', 'Status Quo Real Cash (USD)', 'BizFin CFO Cash (USD)', 'Liquidity Delta (USD)'];
+      const headers = ['Month', 'Units Sold', 'Revenue (USD)', 'Paper Forecast Cash (USD)', 'Status Quo Real Cash (USD)', 'Optimized Cash (USD)', 'Liquidity Delta (USD)'];
       const rows = ledgerData.map(r => [r.month, r.units, r.rev, r.paperCash, r.realCash, r.cfoCash, r.delta].join(','));
       const csv = [headers.join(','), ...rows].join('\n');
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'BizFin_US_Robotics_CFO_Ledger.csv';
+      a.download = 'BizFin_US_Robotics_FPA_Ledger.csv';
       a.click();
       URL.revokeObjectURL(url);
     }
