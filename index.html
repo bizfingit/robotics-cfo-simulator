@@ -66,6 +66,12 @@
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: #09090B; }
     ::-webkit-scrollbar-thumb { background: #27272A; border-radius: 3px; }
+    @media print {
+      header, footer, .no-print { display: none !important; }
+      body { background: #ffffff !important; color: #111114 !important; }
+      .print-card { border: 1px solid #d4d4d8 !important; background: #ffffff !important; color: #111114 !important; }
+      .print-text { color: #27272a !important; }
+    }
   </style>
 </head>
 <body class="antialiased selection:bg-emerald-500/20 selection:text-emerald-300">
@@ -95,16 +101,115 @@
 
     <!-- Navigation Tabs -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-8 text-xs font-medium overflow-x-auto">
-      <button onclick="switchTab('simulator')" id="btn-simulator" class="py-3 tab-active whitespace-nowrap transition-colors">01. Capital & Runway Engine</button>
-      <button onclick="switchTab('economics')" id="btn-economics" class="py-3 tab-inactive whitespace-nowrap transition-colors">02. BOM & Raw Material Costing</button>
-      <button onclick="switchTab('deliverables')" id="btn-deliverables" class="py-3 tab-inactive whitespace-nowrap transition-colors">03. Engagement Architecture (A-to-Z)</button>
+      <button onclick="switchTab('executive')" id="btn-executive" class="py-3 tab-active whitespace-nowrap transition-colors">01. Executive Dashboard</button>
+      <button onclick="switchTab('simulator')" id="btn-simulator" class="py-3 tab-inactive whitespace-nowrap transition-colors">02. Capital & Runway Engine</button>
+      <button onclick="switchTab('economics')" id="btn-economics" class="py-3 tab-inactive whitespace-nowrap transition-colors">03. BOM & Raw Material Costing</button>
+      <button onclick="switchTab('deliverables')" id="btn-deliverables" class="py-3 tab-inactive whitespace-nowrap transition-colors">04. Engagement Architecture (A-to-Z)</button>
     </div>
   </header>
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-    <!-- TAB 1: SIMULATOR -->
-    <section id="tab-simulator" class="space-y-6">
+    <!-- TAB 1: EXECUTIVE DASHBOARD (INSTITUTIONAL BOARD BRIEF) -->
+    <section id="tab-executive" class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-borderSubtle pb-5">
+        <div>
+          <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Confidential Board Memorandum // Live Telemetry</p>
+          <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Executive Financial & Working Capital Dashboard</h1>
+          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">An institutional synthesis of unit economics, supply chain liquidity risk, and non-dilutive capital strategy. All narratives dynamically update as you modify assumptions in Tabs 02 and 03.</p>
+        </div>
+        <div class="flex items-center space-x-3 no-print">
+          <button onclick="switchTab('simulator')" class="px-3.5 py-2 rounded text-xs font-mono border border-emerald-500/30 bg-emerald-950/20 text-emerald-400 hover:bg-emerald-950/40 transition-colors">
+            Adjust Assumptions →
+          </button>
+          <button onclick="window.print()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded text-xs font-mono border border-borderSubtle bg-surface text-zinc-300 hover:text-zinc-100 hover:border-zinc-500 transition-colors">
+            <span>Print / Save PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Executive KPI Strip -->
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
+        <div class="p-4 rounded-lg border border-borderSubtle bg-surface print-card">
+          <p class="text-[10px] font-mono text-zinc-400 uppercase">Starting Liquidity</p>
+          <p id="exec-start-cash" class="text-xl font-mono font-semibold text-zinc-100 mt-1">$2,000,000</p>
+          <p id="exec-burn" class="text-[11px] font-mono text-zinc-500 mt-1">$100k/mo OpEx</p>
+        </div>
+        <div class="p-4 rounded-lg border border-borderSubtle bg-surface print-card">
+          <p class="text-[10px] font-mono text-zinc-400 uppercase">Unit BOM / Margin</p>
+          <p id="exec-bom" class="text-xl font-mono font-semibold text-zinc-100 mt-1">$6,870</p>
+          <p id="exec-margin" class="text-[11px] font-mono text-emerald-400 mt-1">54.2% Gross Margin</p>
+        </div>
+        <div class="p-4 rounded-lg border border-borderSubtle bg-surface print-card">
+          <p class="text-[10px] font-mono text-zinc-400 uppercase">Lowest Cash Trough</p>
+          <p id="exec-trough" class="text-xl font-mono font-semibold text-zinc-100 mt-1">$1,421,090</p>
+          <p class="text-[11px] font-mono text-zinc-500 mt-1">Real Bank Minimum</p>
+        </div>
+        <div class="p-4 rounded-lg border border-rose-500/30 bg-rose-950/10 print-card">
+          <p class="text-[10px] font-mono text-rose-400 uppercase">Trapped Capital</p>
+          <p id="exec-trapped" class="text-xl font-mono font-semibold text-rose-400 mt-1">-$281,670</p>
+          <p id="exec-lead-lbl" class="text-[11px] font-mono text-rose-400/70 mt-1">60-Day Supplier Lag</p>
+        </div>
+        <div class="p-4 rounded-lg border border-emerald-500/30 bg-emerald-950/15 print-card col-span-2 lg:col-span-1">
+          <p class="text-[10px] font-mono text-emerald-400 uppercase">CFO Cash Unlocked</p>
+          <p id="exec-unlocked" class="text-xl font-mono font-semibold text-emerald-400 mt-1">+$516,749</p>
+          <p id="exec-equity" class="text-[11px] font-mono text-emerald-300/80 mt-1">4.31% Equity Saved</p>
+        </div>
+      </div>
+
+      <!-- Institutional Narrative Paragraphs (4 Pillars) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Para 1 -->
+        <div class="p-6 rounded-lg border border-borderSubtle bg-surface space-y-3 print-card">
+          <div class="flex items-center justify-between border-b border-borderSubtle pb-3">
+            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-200">01 // Executive Summary & Liquidity Posture</h2>
+            <span class="text-[10px] font-mono text-emerald-400">LIVE ANALYSIS</span>
+          </div>
+          <p id="para-summary" class="text-sm text-zinc-300 leading-relaxed print-text"></p>
+        </div>
+
+        <!-- Para 2 -->
+        <div class="p-6 rounded-lg border border-borderSubtle bg-surface space-y-3 print-card">
+          <div class="flex items-center justify-between border-b border-borderSubtle pb-3">
+            <h2 class="text-xs font-mono uppercase tracking-wider text-rose-400">02 // Working Capital & Supply Chain Risk</h2>
+            <span class="text-[10px] font-mono text-rose-400/80">CRITICAL EXPOSURE</span>
+          </div>
+          <p id="para-wc-risk" class="text-sm text-zinc-300 leading-relaxed print-text"></p>
+        </div>
+
+        <!-- Para 3 -->
+        <div class="p-6 rounded-lg border border-borderSubtle bg-surface space-y-3 print-card">
+          <div class="flex items-center justify-between border-b border-borderSubtle pb-3">
+            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-200">03 // Unit Economics & BOM Optimization Mandate</h2>
+            <span class="text-[10px] font-mono text-zinc-500">MARGIN ENGINEERING</span>
+          </div>
+          <p id="para-bom-mandate" class="text-sm text-zinc-300 leading-relaxed print-text"></p>
+        </div>
+
+        <!-- Para 4 -->
+        <div class="p-6 rounded-lg border border-emerald-500/30 bg-emerald-950/10 space-y-3 print-card">
+          <div class="flex items-center justify-between border-b border-emerald-500/20 pb-3">
+            <h2 class="text-xs font-mono uppercase tracking-wider text-emerald-400">04 // Capital Strategy & Cap Table Preservation</h2>
+            <span class="text-[10px] font-mono text-emerald-500/80">CFO RECOMMENDATION</span>
+          </div>
+          <p id="para-capital-strategy" class="text-sm text-zinc-300 leading-relaxed print-text"></p>
+        </div>
+      </div>
+
+      <!-- Bottom Action Bar -->
+      <div class="p-5 rounded-lg border border-borderSubtle bg-zinc-900/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 no-print">
+        <div class="text-xs text-zinc-400">
+          <strong class="text-zinc-200">Prepared by BizFin Financial Engineering Desk.</strong> Want this exact executive brief generated automatically every Monday from your QuickBooks, ERP, and BOM data?
+        </div>
+        <a href="mailto:connect.bizfin@gmail.com?subject=Executive%20CFO%20Desk%20Inquiry&body=Hi%20BizFin%20Team%2C%0A%0AI%20reviewed%20the%20Executive%20Dashboard%20and%20would%20like%20to%20discuss%20setting%20up%20a%20Fractional%20CFO%20desk%20for%20our%20robotics%20company."
+           class="px-4 py-2 rounded text-xs font-semibold bg-zinc-100 text-obsidian hover:bg-zinc-200 transition-colors shrink-0">
+          Deploy for Your Startup
+        </a>
+      </div>
+    </section>
+
+    <!-- TAB 2: SIMULATOR -->
+    <section id="tab-simulator" class="hidden space-y-6">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-borderSubtle pb-5">
         <div>
           <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Interactive Financial Telemetry</p>
@@ -142,7 +247,7 @@
 
             <div>
               <div class="flex justify-between text-xs mb-1.5">
-                <label class="text-zinc-400">Unit Cost / BOM <span class="text-[10px] text-zinc-500">(From Tab 02)</span></label>
+                <label class="text-zinc-400">Unit Cost / BOM <span class="text-[10px] text-zinc-500">(From Tab 03)</span></label>
                 <span id="val-bom" class="font-mono text-zinc-100">$6,870</span>
               </div>
               <input id="in-bom" type="range" min="1000" max="30000" step="50" value="6870" class="w-full" oninput="recalc()" />
@@ -283,16 +388,16 @@
       </div>
     </section>
 
-    <!-- TAB 2: BOM & RAW MATERIAL COSTING BUILDER -->
+    <!-- TAB 3: BOM & RAW MATERIAL COSTING BUILDER -->
     <section id="tab-economics" class="hidden space-y-6">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-borderSubtle pb-5">
         <div>
           <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Interactive Bill of Materials (BOM) Engine</p>
           <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Raw Material Selection & Unit Costing</h1>
-          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Select robotics raw materials, adjust quantities, unit costs, and supplier lead times. Totals automatically sync with your 12-Month Cash Runway engine.</p>
+          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Select robotics raw materials, adjust quantities, unit costs, and supplier lead times. Totals automatically sync with your Executive Dashboard and Cash Runway engine.</p>
         </div>
-        <button onclick="switchTab('simulator')" class="px-3.5 py-2 rounded text-xs font-mono bg-zinc-100 text-obsidian hover:bg-zinc-200 transition-colors">
-          View Impact on Runway →
+        <button onclick="switchTab('executive')" class="px-3.5 py-2 rounded text-xs font-mono bg-zinc-100 text-obsidian hover:bg-zinc-200 transition-colors">
+          View Executive Brief →
         </button>
       </div>
 
@@ -362,7 +467,7 @@
             <tbody id="bom-table-body" class="divide-y divide-borderSubtle/60 text-xs font-mono"></tbody>
             <tfoot>
               <tr class="bg-obsidian/80 border-t border-borderSubtle text-xs font-mono font-semibold">
-                <td class="py-3 px-4 text-zinc-200" colspan="3">TOTAL COST PER ROBOT (AUTO-SYNCED TO RUNWAY)</td>
+                <td class="py-3 px-4 text-zinc-200" colspan="3">TOTAL COST PER ROBOT (AUTO-SYNCED)</td>
                 <td id="bom-foot-lead" class="py-3 px-4 text-rose-400">Max: 60 Days</td>
                 <td id="bom-foot-total" class="py-3 px-4 text-right text-emerald-400">$6,870</td>
                 <td></td>
@@ -371,29 +476,9 @@
           </table>
         </div>
       </div>
-
-      <!-- Strategic Playbooks -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="p-6 rounded-lg border border-borderSubtle bg-surface space-y-4">
-          <h3 class="text-sm font-semibold text-zinc-100 uppercase tracking-wide font-mono">Supply Chain Margin Playbook</h3>
-          <ul class="space-y-3 text-xs text-zinc-300 leading-relaxed">
-            <li class="flex items-start space-x-2.5"><span class="text-emerald-400 font-mono">01.</span><span><strong class="text-zinc-100">Actuator & Sensor Tiering:</strong> Auditing Tier-1 vs Tier-2 suppliers to compress top-3 BOM line items by 10%–20% at 100+ unit volumes.</span></li>
-            <li class="flex items-start space-x-2.5"><span class="text-emerald-400 font-mono">02.</span><span><strong class="text-zinc-100">Net-60 Supplier Restructuring:</strong> Shifting critical hardware vendors from 100% upfront wire to 30% PO / 70% Net-60 post-delivery.</span></li>
-            <li class="flex items-start space-x-2.5"><span class="text-emerald-400 font-mono">03.</span><span><strong class="text-zinc-100">Deposit-Funded Manufacturing:</strong> Structuring B2B pilot and fleet contracts with 30%–50% upfront deposits to achieve a negative Cash Conversion Cycle.</span></li>
-          </ul>
-        </div>
-        <div class="p-6 rounded-lg border border-borderSubtle bg-surface space-y-4">
-          <h3 class="text-sm font-semibold text-zinc-100 uppercase tracking-wide font-mono">Non-Dilutive Capital Stack</h3>
-          <ul class="space-y-3 text-xs text-zinc-300 leading-relaxed">
-            <li class="flex items-start space-x-2.5"><span class="text-emerald-400 font-mono">01.</span><span><strong class="text-zinc-100">Equipment & RaaS Financing:</strong> Financing deployed robotics fleets via asset-backed credit lines rather than burning Seed equity.</span></li>
-            <li class="flex items-start space-x-2.5"><span class="text-emerald-400 font-mono">02.</span><span><strong class="text-zinc-100">Venture Debt Structuring:</strong> Modeling debt service coverage ratios (DSCR) to raise 20%–30% non-dilutive runway extension post-Seed.</span></li>
-            <li class="flex items-start space-x-2.5"><span class="text-emerald-400 font-mono">03.</span><span><strong class="text-zinc-100">US R&D Tax Credit Capture:</strong> Segregating qualifying robotics engineering payroll to offset up to $500k/yr in federal payroll taxes.</span></li>
-          </ul>
-        </div>
-      </div>
     </section>
 
-    <!-- TAB 3: A-TO-Z DELIVERABLES -->
+    <!-- TAB 4: A-TO-Z DELIVERABLES -->
     <section id="tab-deliverables" class="hidden space-y-8">
       <div class="border-b border-borderSubtle pb-5">
         <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">A-to-Z Fractional CFO Execution</p>
@@ -476,7 +561,6 @@
     let ledgerData = [];
     let chartInstance = null;
 
-    // Initial Raw Materials List (Matches $6,870 Baseline & 60-day Max Lead Time)
     let bomItems = [
       { name: "3D LiDAR Sensor (Solid-State)", qty: 1, cost: 1200, lead: 45 },
       { name: "Brushless DC Actuators", qty: 6, cost: 400, lead: 60 },
@@ -492,7 +576,7 @@
     };
 
     function switchTab(tabId) {
-      ['simulator', 'economics', 'deliverables'].forEach(t => {
+      ['executive', 'simulator', 'economics', 'deliverables'].forEach(t => {
         document.getElementById('tab-' + t).classList.toggle('hidden', t !== tabId);
         const btn = document.getElementById('btn-' + t);
         btn.classList.toggle('tab-active', t === tabId);
@@ -500,7 +584,6 @@
       });
     }
 
-    // --- BOM RAW MATERIAL BUILDER LOGIC ---
     function renderBOMTable() {
       const tbody = document.getElementById('bom-table-body');
       tbody.innerHTML = bomItems.map((item, idx) => {
@@ -552,12 +635,7 @@
     function addMaterialFromPreset() {
       const val = document.getElementById('material-preset').value;
       const [name, qty, cost, lead] = val.split('|');
-      bomItems.push({
-        name,
-        qty: parseFloat(qty),
-        cost: parseFloat(cost),
-        lead: parseFloat(lead)
-      });
+      bomItems.push({ name, qty: parseFloat(qty), cost: parseFloat(cost), lead: parseFloat(lead) });
       renderBOMTable();
     }
 
@@ -570,7 +648,6 @@
       document.getElementById('bom-foot-lead').textContent = `Max: ${maxLeadDays} Days`;
       document.getElementById('econ-max-lead').textContent = `${maxLeadDays} Days`;
 
-      // Sync to Tab 1 sliders
       const bomSlider = document.getElementById('in-bom');
       if (totalBOM > +bomSlider.max) bomSlider.max = Math.ceil(totalBOM / 1000) * 1000;
       bomSlider.value = Math.round(totalBOM);
@@ -579,7 +656,6 @@
       recalc();
     }
 
-    // --- CORE SIMULATOR ENGINE ---
     function recalc() {
       const startCash = +document.getElementById('in-cash').value;
       const bom = +document.getElementById('in-bom').value;
@@ -590,7 +666,6 @@
       const depositPct = +document.getElementById('in-deposit').value;
       const valuationM = +document.getElementById('in-valuation').value;
 
-      // Update slider labels
       document.getElementById('val-cash').textContent = fmtUSD(startCash);
       document.getElementById('val-bom').textContent = fmtUSD(bom);
       document.getElementById('val-price').textContent = fmtUSD(price);
@@ -609,6 +684,8 @@
       let paperCash = startCash;
       let realCash = startCash;
       let cfoCash = startCash;
+      let minRealCash = startCash;
+      let troughMonth = "Month 01";
       ledgerData = [];
 
       const labels = [], paperArr = [], realArr = [], cfoArr = [];
@@ -620,6 +697,11 @@
 
         paperCash += (rev - units * bom - opex);
         realCash += (rev - advUnits * bom - opex);
+
+        if (realCash < minRealCash) {
+          minRealCash = realCash;
+          troughMonth = `Month ${String(i + 1).padStart(2, '0')}`;
+        }
 
         const depositIn = (advUnits * price) * (depositPct / 100);
         const remRev = rev * (1 - depositPct / 100);
@@ -642,27 +724,50 @@
 
       const trapped = realCash - paperCash;
       const unlocked = cfoCash - realCash;
-      const equitySaved = (unlocked / (valuationM * 1000000)) * 100;
+      const equitySaved = Math.max(0, (unlocked / (valuationM * 1000000)) * 100);
       const totalUnits = salesSchedule.reduce((a, b) => a + b, 0);
+      const totalRev = totalUnits * price;
       const annualBomSavings = (bom - optBom) * totalUnits;
+      const bottleneckItem = bomItems.reduce((prev, curr) => (curr.lead > prev.lead ? curr : prev), bomItems[0]);
 
-      // KPIs
+      // Update Tab 1 (Executive Dashboard KPIs & Professional Paragraphs)
+      document.getElementById('exec-start-cash').textContent = fmtUSD(startCash);
+      document.getElementById('exec-burn').textContent = `${fmtUSD(opex)}/mo OpEx`;
+      document.getElementById('exec-bom').textContent = fmtUSD(bom);
+      document.getElementById('exec-margin').textContent = `${margin.toFixed(1)}% Gross Margin`;
+      document.getElementById('exec-trough').textContent = fmtUSD(minRealCash);
+      document.getElementById('exec-trapped').textContent = fmtUSD(trapped);
+      document.getElementById('exec-lead-lbl').textContent = `${leadMo * 30}-Day Supplier Lag`;
+      document.getElementById('exec-unlocked').textContent = (unlocked >= 0 ? '+' : '') + fmtUSD(unlocked);
+      document.getElementById('exec-equity').textContent = `${equitySaved.toFixed(2)}% Equity Saved`;
+
+      document.getElementById('para-summary').innerHTML =
+        `Operating from a starting bank balance of <strong class="text-zinc-100">${fmtUSD(startCash)}</strong> with fixed monthly R&D and facility operating expenses of <strong class="text-zinc-100">${fmtUSD(opex)}</strong>, the company requires <strong class="text-zinc-100">${breakeven.toFixed(1)} robots per month</strong> to achieve cash-flow break-even. Across the projected 12-month ramp of ${totalUnits} units (${fmtUSD(totalRev)} top-line revenue), real bank liquidity reaches its lowest point (Cash Trough) of <strong class="text-zinc-100">${fmtUSD(minRealCash)}</strong> in <strong class="text-zinc-100">${troughMonth}</strong> before transitioning to self-sustaining positive cash flow.`;
+
+      document.getElementById('para-wc-risk').innerHTML =
+        `While standard accrual accounting projects a Month 12 ending balance of <strong class="text-zinc-100">${fmtUSD(paperCash)}</strong>, hardware supply chain timing creates a severe liquidity divergence. Driven primarily by a <strong class="text-rose-400">${leadMo * 30}-day</strong> advance payment requirement (bottlenecked by <strong class="text-zinc-100">${bottleneckItem ? bottleneckItem.name : 'core components'}</strong>), actual bank liquidity drops to <strong class="text-rose-400">${fmtUSD(realCash)}</strong>. This leaves <strong class="text-rose-400">${fmtUSD(Math.abs(trapped))}</strong> permanently trapped in working capital—a classic scaling trap that forces premature bridge rounds.`;
+
+      document.getElementById('para-bom-mandate').innerHTML =
+        `Current unit economics yield a <strong class="text-zinc-100">${margin.toFixed(1)}% Gross Margin</strong> (${fmtUSD(grossProfit)} gross profit per unit on a ${fmtUSD(bom)} Bill of Materials across ${bomItems.length} tracked components). By executing BizFin's supplier tiering and component consolidation playbook to compress BOM by <strong class="text-emerald-400">${bomOptPct}%</strong> (down to <strong class="text-emerald-400">${fmtUSD(optBom)}</strong>/unit), Gross Margin expands to <strong class="text-emerald-400">${optMargin.toFixed(1)}%</strong>—generating <strong class="text-emerald-400">+${fmtUSD(annualBomSavings)}</strong> in pure Year 1 gross profit without increasing sales volume.`;
+
+      document.getElementById('para-capital-strategy').innerHTML =
+        `Combining a <strong class="text-emerald-400">${bomOptPct}% BOM optimization</strong> with <strong class="text-emerald-400">${depositPct}% upfront customer deposits</strong> elevates Month 12 real bank liquidity from ${fmtUSD(realCash)} to <strong class="text-emerald-400">${fmtUSD(cfoCash)}</strong>—unlocking <strong class="text-emerald-400">${fmtUSD(unlocked)}</strong> in internal working capital. At an implied valuation of <strong class="text-zinc-100">$${valuationM}.0M</strong>, this directly protects <strong class="text-emerald-400">${equitySaved.toFixed(2)}% in founder equity</strong> from unnecessary dilution, positioning the company to layer non-dilutive Venture Debt and US R&D Tax Credits ahead of Series A.`;
+
+      // Update Tab 2 & 3 KPIs
       document.getElementById('kpi-margin').textContent = `${margin.toFixed(1)}%`;
       document.getElementById('kpi-margin-opt').textContent = `${optMargin.toFixed(1)}% Optimized`;
       document.getElementById('kpi-breakeven').textContent = grossProfit > 0 ? `${breakeven.toFixed(1)}/mo` : 'N/A';
       document.getElementById('kpi-trapped').textContent = fmtUSD(trapped);
       document.getElementById('kpi-unlocked').textContent = (unlocked >= 0 ? '+' : '') + fmtUSD(unlocked);
-      document.getElementById('kpi-dilution').textContent = `Saves ${Math.max(0, equitySaved).toFixed(2)}% Equity`;
+      document.getElementById('kpi-dilution').textContent = `Saves ${equitySaved.toFixed(2)}% Equity`;
 
-      // Tab 2 metrics
       document.getElementById('econ-bom-curr').textContent = fmtUSD(bom);
       document.getElementById('econ-bom-opt').textContent = fmtUSD(optBom);
       document.getElementById('econ-bom-annual').textContent = `+${fmtUSD(annualBomSavings)} Annual Profit`;
-      document.getElementById('econ-equity').textContent = `${Math.max(0, equitySaved).toFixed(2)}%`;
+      document.getElementById('econ-equity').textContent = `${equitySaved.toFixed(2)}%`;
 
-      // Diagnostic text
       document.getElementById('diagnostic-text').innerHTML =
-        `<strong class="text-zinc-100">CFO Diagnostic:</strong> With a <span class="font-mono text-zinc-100">${fmtUSD(bom)}</span> unit BOM and <span class="font-mono text-rose-400">${leadMo * 30}-day</span> supplier lead time, <span class="font-mono text-rose-400">${fmtUSD(Math.abs(trapped))}</span> is trapped in working capital by Month 12. Executing a <span class="font-mono text-emerald-400">${bomOptPct}% BOM reduction</span> alongside <span class="font-mono text-emerald-400">${depositPct}% upfront deposits</span> unlocks <span class="font-mono text-emerald-400">${fmtUSD(unlocked)}</span> in liquid cash—protecting <span class="font-mono text-zinc-100">${Math.max(0, equitySaved).toFixed(2)}%</span> in founder equity.`;
+        `<strong class="text-zinc-100">CFO Diagnostic:</strong> With a <span class="font-mono text-zinc-100">${fmtUSD(bom)}</span> unit BOM and <span class="font-mono text-rose-400">${leadMo * 30}-day</span> supplier lead time, <span class="font-mono text-rose-400">${fmtUSD(Math.abs(trapped))}</span> is trapped in working capital by Month 12. Executing a <span class="font-mono text-emerald-400">${bomOptPct}% BOM reduction</span> alongside <span class="font-mono text-emerald-400">${depositPct}% upfront deposits</span> unlocks <span class="font-mono text-emerald-400">${fmtUSD(unlocked)}</span> in liquid cash—protecting <span class="font-mono text-zinc-100">${equitySaved.toFixed(2)}%</span> in founder equity.`;
 
       // Table
       const tbody = document.getElementById('ledger-body');
