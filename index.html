@@ -1544,6 +1544,46 @@
     }
 
     renderBOMTable();
+    // --- LIVE GOOGLE SHEET API AUTO-SYNC ---
+    const LIVE_SHEET_API = "https://script.google.com/macros/s/AKfycbwP1jAH4Qqys_IG8TWswX09figW2G2DKCTP7XoDyssJvW1i15oVeTTfWfc4XiUw6ovw/exec";
+
+    async function syncFromGoogleSheet() {
+      try {
+        const response = await fetch(LIVE_SHEET_API);
+        const result = await response.json();
+
+        if (result.status === "success" && result.data) {
+          const d = result.data;
+
+          // Update sliders safely (expand max if sheet value is higher)
+          const setSlider = (id, val) => {
+            const el = document.getElementById(id);
+            if (!el || !val) return;
+            if (val > +el.max) el.max = Math.ceil(val / 100000) * 100000;
+            el.value = Math.round(val);
+          };
+
+          setSlider('in-cash', d.startingCash);
+          setSlider('in-bom', d.unitBOM);
+          setSlider('in-price', d.sellingPrice);
+          setSlider('in-opex', d.monthlyOpEx);
+
+          recalc();
+
+          // Visual confirmation in top status strip
+          const stripBadge = document.querySelector('.text-zinc-500.hidden.lg\\:inline');
+          if (stripBadge) {
+            stripBadge.textContent = "● LIVE GOOGLE SHEET SYNCED";
+            stripBadge.classList.remove("text-zinc-500");
+            stripBadge.classList.add("text-emerald-400");
+          }
+        }
+      } catch (err) {
+        console.log("Using baseline demo numbers (Sheet sync offline):", err);
+      }
+    }
+
+    syncFromGoogleSheet();
   </script>
 </body>
 </html>
