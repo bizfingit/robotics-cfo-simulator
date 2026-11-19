@@ -63,6 +63,18 @@
     .tab-inactive:hover {
       color: #D4D4D8;
     }
+    .subtab-active {
+      background-color: #FAFAFA;
+      color: #09090B;
+      font-weight: 600;
+    }
+    .subtab-inactive {
+      background-color: transparent;
+      color: #A1A1AA;
+    }
+    .subtab-inactive:hover {
+      color: #FAFAFA;
+    }
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: #09090B; }
     ::-webkit-scrollbar-thumb { background: #27272A; border-radius: 3px; }
@@ -89,7 +101,7 @@
       </div>
 
       <div class="flex items-center space-x-3">
-        <!-- Global Go-To-Market Mode Switcher (Interconnects CapEx vs RaaS across ALL tabs) -->
+        <!-- Global Go-To-Market Mode Switcher -->
         <div class="hidden sm:flex items-center bg-surface border border-borderSubtle rounded p-0.5 text-[11px] font-mono">
           <button id="mode-capex" onclick="setModelMode('capex')" class="px-2.5 py-1 rounded bg-zinc-100 text-obsidian font-semibold transition-colors">CapEx Sale</button>
           <button id="mode-raas" onclick="setModelMode('raas')" class="px-2.5 py-1 rounded text-zinc-400 hover:text-zinc-200 transition-colors">RaaS Subscription</button>
@@ -112,22 +124,23 @@
           <span class="text-zinc-600">→</span>
           <span>Mode (<strong id="strip-mode" class="text-emerald-400">CapEx Direct</strong>)</span>
           <span class="text-zinc-600">→</span>
-          <span>Bank DSCR (<strong id="strip-dscr" class="text-zinc-200">2.45x</strong>)</span>
+          <span>5-Yr Rev (<strong id="strip-5yr" class="text-zinc-200">$28.4M</strong>)</span>
           <span class="text-zinc-600">→</span>
-          <span>VC Runway (<strong id="strip-vc" class="text-emerald-400">+40.0 Mo</strong>)</span>
+          <span>Bank DSCR (<strong id="strip-dscr" class="text-zinc-200">2.45x</strong>)</span>
         </div>
         <span class="text-zinc-500 hidden lg:inline">SINGLE SOURCE OF TRUTH</span>
       </div>
     </div>
 
-    <!-- 6-Module Navigation Tabs -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-6 text-xs font-medium overflow-x-auto">
-      <button onclick="switchTab('executive')" id="btn-executive" class="py-3 tab-active whitespace-nowrap transition-colors">01. Executive Board Memo</button>
-      <button onclick="switchTab('simulator')" id="btn-simulator" class="py-3 tab-inactive whitespace-nowrap transition-colors">02. Capital & Runway Engine</button>
-      <button onclick="switchTab('economics')" id="btn-economics" class="py-3 tab-inactive whitespace-nowrap transition-colors">03. BOM & Raw Materials</button>
-      <button onclick="switchTab('strategy')" id="btn-strategy" class="py-3 tab-inactive whitespace-nowrap transition-colors">04. RaaS & Business Strategy</button>
-      <button onclick="switchTab('capitaldeck')" id="btn-capitaldeck" class="py-3 tab-inactive whitespace-nowrap transition-colors">05. Bank Loan & VC Deck</button>
-      <button onclick="switchTab('deliverables')" id="btn-deliverables" class="py-3 tab-inactive whitespace-nowrap transition-colors">06. A-to-Z Desk & Pricing</button>
+    <!-- 7-Module Navigation Tabs -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-5 text-xs font-medium overflow-x-auto">
+      <button onclick="switchTab('executive')" id="btn-executive" class="py-3 tab-active whitespace-nowrap transition-colors">01. Executive Memo</button>
+      <button onclick="switchTab('simulator')" id="btn-simulator" class="py-3 tab-inactive whitespace-nowrap transition-colors">02. Runway Engine</button>
+      <button onclick="switchTab('performance')" id="btn-performance" class="py-3 tab-inactive whitespace-nowrap transition-colors">03. Performance & Multi-Year</button>
+      <button onclick="switchTab('economics')" id="btn-economics" class="py-3 tab-inactive whitespace-nowrap transition-colors">04. BOM & Materials</button>
+      <button onclick="switchTab('strategy')" id="btn-strategy" class="py-3 tab-inactive whitespace-nowrap transition-colors">05. RaaS Strategy</button>
+      <button onclick="switchTab('capitaldeck')" id="btn-capitaldeck" class="py-3 tab-inactive whitespace-nowrap transition-colors">06. Bank & VC Deck</button>
+      <button onclick="switchTab('deliverables')" id="btn-deliverables" class="py-3 tab-inactive whitespace-nowrap transition-colors">07. Desk & Pricing</button>
     </div>
   </header>
 
@@ -141,11 +154,11 @@
         <div>
           <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Unified Management Synthesis // Live Telemetry</p>
           <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Executive Financial & Strategic Dashboard</h1>
-          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Every input across Raw Materials (BOM), Runway, RaaS Pricing, Bank Debt, and VC Fundraising is dynamically linked into this single board brief.</p>
+          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Every input across Raw Materials (BOM), Runway, Multi-Year Growth, RaaS Pricing, Bank Debt, and VC Fundraising is dynamically linked into this single board brief.</p>
         </div>
         <div class="flex items-center space-x-3 no-print">
-          <button onclick="switchTab('economics')" class="px-3.5 py-2 rounded text-xs font-mono border border-emerald-500/30 bg-emerald-950/20 text-emerald-400 hover:bg-emerald-950/40 transition-colors">
-            Edit Raw Materials →
+          <button onclick="switchTab('performance')" class="px-3.5 py-2 rounded text-xs font-mono border border-emerald-500/30 bg-emerald-950/20 text-emerald-400 hover:bg-emerald-950/40 transition-colors">
+            View 5-Yr Performance →
           </button>
           <button onclick="window.print()" class="px-3.5 py-2 rounded text-xs font-mono border border-borderSubtle bg-surface text-zinc-300 hover:text-zinc-100 hover:border-zinc-500 transition-colors">
             Print / Save Board PDF
@@ -195,15 +208,15 @@
         <div class="p-6 rounded-lg border border-borderSubtle bg-surface space-y-3 print-card">
           <div class="flex items-center justify-between border-b border-borderSubtle pb-3">
             <h2 class="text-xs font-mono uppercase tracking-wider text-rose-400">02 // Working Capital & Supply Chain Risk</h2>
-            <span class="text-[10px] font-mono text-rose-400/80">LINKED TO BOM TAB 03</span>
+            <span class="text-[10px] font-mono text-rose-400/80">LINKED TO BOM TAB 04</span>
           </div>
           <p id="para-wc-risk" class="text-sm text-zinc-300 leading-relaxed print-text"></p>
         </div>
 
         <div class="p-6 rounded-lg border border-borderSubtle bg-surface space-y-3 print-card">
           <div class="flex items-center justify-between border-b border-borderSubtle pb-3">
-            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-200">03 // Unit Economics & RaaS Payback Link</h2>
-            <span class="text-[10px] font-mono text-zinc-500">LINKED TO STRATEGY TAB 04</span>
+            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-200">03 // Multi-Year Trajectory & RaaS Payback</h2>
+            <span class="text-[10px] font-mono text-zinc-500">LINKED TO TABS 03 & 05</span>
           </div>
           <p id="para-bom-mandate" class="text-sm text-zinc-300 leading-relaxed print-text"></p>
         </div>
@@ -211,7 +224,7 @@
         <div class="p-6 rounded-lg border border-emerald-500/30 bg-emerald-950/10 space-y-3 print-card">
           <div class="flex items-center justify-between border-b border-emerald-500/20 pb-3">
             <h2 class="text-xs font-mono uppercase tracking-wider text-emerald-400">04 // Bank Debt DSCR & VC Use-of-Funds</h2>
-            <span class="text-[10px] font-mono text-emerald-500/80">LINKED TO CAPITAL TAB 05</span>
+            <span class="text-[10px] font-mono text-emerald-500/80">LINKED TO CAPITAL TAB 06</span>
           </div>
           <p id="para-capital-strategy" class="text-sm text-zinc-300 leading-relaxed print-text"></p>
         </div>
@@ -226,7 +239,7 @@
         <div>
           <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Interactive Financial Telemetry</p>
           <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Working Capital & Runway Stress-Test</h1>
-          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Auto-receives BOM cost & supplier lag from Tab 03, switches dynamically between CapEx and RaaS from Tab 04, and feeds DSCR into Tab 05.</p>
+          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Auto-receives BOM cost & supplier lag from Tab 04, feeds quarterly/annual P&L into Tab 03, and computes Bank DSCR in Tab 06.</p>
         </div>
         <div class="flex items-center space-x-3">
           <button onclick="switchTab('economics')" class="px-3.5 py-2 rounded text-xs font-mono border border-emerald-500/30 bg-emerald-950/20 text-emerald-400 hover:bg-emerald-950/40 transition-colors">
@@ -256,7 +269,7 @@
 
             <div>
               <div class="flex justify-between text-xs mb-1.5">
-                <label class="text-zinc-400">Unit Cost / BOM <span class="text-[10px] text-zinc-500">(Tab 03)</span></label>
+                <label class="text-zinc-400">Unit Cost / BOM <span class="text-[10px] text-zinc-500">(Tab 04)</span></label>
                 <span id="val-bom" class="font-mono text-zinc-100">$6,870</span>
               </div>
               <input id="in-bom" type="range" min="1000" max="30000" step="50" value="6870" class="w-full" oninput="recalc()" />
@@ -392,17 +405,164 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- TAB 3: BOM & RAW MATERIAL COSTING          -->
+    <!-- TAB 3: PERFORMANCE & MULTI-YEAR HISTORY    -->
+    <!-- ========================================== -->
+    <section id="tab-performance" class="hidden space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-borderSubtle pb-5">
+        <div>
+          <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Financial Year & Since-Inception Telemetry</p>
+          <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Monthly, Quarterly, Half-Yearly & 5-Year Performance</h1>
+          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Analyze Financial Year 1 across Monthly, Quarterly (Q1–Q4), Half-Yearly (H1/H2), and Annual views—plus track company performance per year since launch (Year 1 to Year 5).</p>
+        </div>
+
+        <!-- Period View Switcher -->
+        <div class="inline-flex items-center bg-surface border border-borderSubtle rounded-lg p-1 text-xs font-mono">
+          <button onclick="setPerfView('monthly')" id="pv-monthly" class="px-3 py-1.5 rounded subtab-inactive transition-colors">Monthly</button>
+          <button onclick="setPerfView('quarterly')" id="pv-quarterly" class="px-3 py-1.5 rounded subtab-active transition-colors">Quarterly</button>
+          <button onclick="setPerfView('halfyearly')" id="pv-halfyearly" class="px-3 py-1.5 rounded subtab-inactive transition-colors">6-Month (H1/H2)</button>
+          <button onclick="setPerfView('annual')" id="pv-annual" class="px-3 py-1.5 rounded subtab-inactive transition-colors">FY1 Annual</button>
+        </div>
+      </div>
+
+      <!-- FY1 Performance Chart + Table -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-5 p-5 rounded-lg border border-borderSubtle bg-surface">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 id="perf-chart-title" class="text-sm font-medium text-zinc-100">FY1 Quarterly Revenue vs. Net Profit</h3>
+              <p class="text-xs text-zinc-400">Live P&L aggregation from BOM & OpEx</p>
+            </div>
+          </div>
+          <div class="h-64 w-full">
+            <canvas id="perfChart"></canvas>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 rounded-lg border border-borderSubtle bg-surface overflow-hidden flex flex-col">
+          <div class="px-5 py-3.5 border-b border-borderSubtle flex items-center justify-between">
+            <h3 id="perf-table-title" class="text-xs font-mono uppercase tracking-wider text-zinc-200">Financial Year 1 — Quarterly Breakdown (Q1–Q4)</h3>
+            <span class="text-[10px] font-mono text-emerald-400">AUTO-SYNCED P&L</span>
+          </div>
+          <div class="overflow-x-auto flex-1">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-borderSubtle text-[11px] font-mono text-zinc-400 bg-obsidian/50">
+                  <th class="py-2.5 px-4">Period</th>
+                  <th class="py-2.5 px-4 text-right">Units</th>
+                  <th class="py-2.5 px-4 text-right">Revenue</th>
+                  <th class="py-2.5 px-4 text-right">COGS (BOM)</th>
+                  <th class="py-2.5 px-4 text-right">Gross Profit</th>
+                  <th class="py-2.5 px-4 text-right">OpEx</th>
+                  <th class="py-2.5 px-4 text-right">Net EBITDA</th>
+                </tr>
+              </thead>
+              <tbody id="perf-table-body" class="divide-y divide-borderSubtle/60 text-xs font-mono"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- SINCE INCEPTION: 5-YEAR COMPANY PERFORMANCE TRACKER -->
+      <div class="pt-4 space-y-5">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-borderSubtle pb-4">
+          <div>
+            <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest">Since Inception Trajectory (Year 1 → Year 5)</p>
+            <h2 class="text-xl font-semibold text-zinc-100 mt-0.5">Per-Year Company Performance & Scaling Roadmap</h2>
+          </div>
+
+          <!-- Multi-Year Growth Controls -->
+          <div class="flex flex-wrap items-center gap-5 bg-surface border border-borderSubtle rounded-lg px-4 py-2.5">
+            <div class="w-44">
+              <div class="flex justify-between text-[11px] font-mono mb-1">
+                <span class="text-zinc-400">YoY Unit Growth</span>
+                <span id="val-yoy-growth" class="text-emerald-400">85% / yr</span>
+              </div>
+              <input id="in-yoy-growth" type="range" min="20" max="200" step="5" value="85" class="w-full lever" oninput="recalc()" />
+            </div>
+            <div class="w-44">
+              <div class="flex justify-between text-[11px] font-mono mb-1">
+                <span class="text-zinc-400">Annual OpEx Scale</span>
+                <span id="val-opex-growth" class="text-zinc-200">35% / yr</span>
+              </div>
+              <input id="in-opex-growth" type="range" min="10" max="100" step="5" value="35" class="w-full" oninput="recalc()" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 5-Year KPI Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-4 rounded-lg border border-borderSubtle bg-surface">
+            <p class="text-[10px] font-mono text-zinc-400 uppercase">5-Year Cumulative Revenue</p>
+            <p id="kpi-5yr-rev" class="text-xl font-mono font-semibold text-zinc-100 mt-1">$28.4M</p>
+            <p class="text-[11px] font-mono text-zinc-500 mt-1">Year 1 to Year 5 Total</p>
+          </div>
+          <div class="p-4 rounded-lg border border-emerald-500/30 bg-emerald-950/10">
+            <p class="text-[10px] font-mono text-emerald-400 uppercase">5-Year Cumulative EBITDA</p>
+            <p id="kpi-5yr-ebitda" class="text-xl font-mono font-semibold text-emerald-400 mt-1">$8.2M</p>
+            <p id="kpi-5yr-margin" class="text-[11px] font-mono text-emerald-300/80 mt-1">28.9% Avg EBITDA Margin</p>
+          </div>
+          <div class="p-4 rounded-lg border border-borderSubtle bg-surface">
+            <p class="text-[10px] font-mono text-zinc-400 uppercase">Total Fleet Deployed (Y5)</p>
+            <p id="kpi-5yr-units" class="text-xl font-mono font-semibold text-zinc-100 mt-1">2,840 Robots</p>
+            <p class="text-[11px] font-mono text-zinc-500 mt-1">Cumulative Installed Base</p>
+          </div>
+          <div class="p-4 rounded-lg border border-borderSubtle bg-surface">
+            <p class="text-[10px] font-mono text-zinc-400 uppercase">Year 5 Annual Run-Rate</p>
+            <p id="kpi-y5-rev" class="text-xl font-mono font-semibold text-zinc-100 mt-1">$13.8M</p>
+            <p class="text-[11px] font-mono text-emerald-400 mt-1">Series B Scale Benchmark</p>
+          </div>
+        </div>
+
+        <!-- 5-Year Table & Chart -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-7 rounded-lg border border-borderSubtle bg-surface overflow-hidden">
+            <div class="px-5 py-3.5 border-b border-borderSubtle flex items-center justify-between">
+              <h3 class="text-xs font-mono uppercase tracking-wider text-zinc-200">Per-Year Company Performance Ledger (Since Launch)</h3>
+              <span class="text-[10px] font-mono text-zinc-500">YEAR 1 — YEAR 5</span>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="border-b border-borderSubtle text-[11px] font-mono text-zinc-400 bg-obsidian/50">
+                    <th class="py-2.5 px-4">Fiscal Year</th>
+                    <th class="py-2.5 px-4 text-right">Units Sold</th>
+                    <th class="py-2.5 px-4 text-right">Revenue</th>
+                    <th class="py-2.5 px-4 text-right">YoY %</th>
+                    <th class="py-2.5 px-4 text-right">Gross Margin</th>
+                    <th class="py-2.5 px-4 text-right">Net EBITDA</th>
+                    <th class="py-2.5 px-4 text-right">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="multiyear-body" class="divide-y divide-borderSubtle/60 text-xs font-mono"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 p-5 rounded-lg border border-borderSubtle bg-surface">
+            <div class="mb-4">
+              <h3 class="text-sm font-medium text-zinc-100">5-Year Revenue & EBITDA Expansion</h3>
+              <p class="text-xs text-zinc-400">Company growth trajectory from Year 1 launch to Year 5 maturity</p>
+            </div>
+            <div class="h-60 w-full">
+              <canvas id="multiYearChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: BOM & RAW MATERIAL COSTING          -->
     <!-- ========================================== -->
     <section id="tab-economics" class="hidden space-y-6">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-borderSubtle pb-5">
         <div>
           <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Upstream Driver // Interactive Bill of Materials</p>
           <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Raw Material Selection & Unit Costing</h1>
-          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Changes here immediately cascade into Runway (Tab 02), RaaS Payback (Tab 04), Bank DSCR (Tab 05), and the Executive Memo (Tab 01).</p>
+          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Changes here immediately cascade into Runway (Tab 02), 5-Year Performance (Tab 03), RaaS Payback (Tab 05), and Bank DSCR (Tab 06).</p>
         </div>
         <button onclick="switchTab('simulator')" class="px-3.5 py-2 rounded text-xs font-mono bg-zinc-100 text-obsidian hover:bg-zinc-200 transition-colors">
-          See Runway & DSCR Impact →
+          See Runway & P&L Impact →
         </button>
       </div>
 
@@ -410,7 +570,7 @@
         <div class="p-5 rounded-lg border border-borderSubtle bg-surface">
           <p class="text-[11px] font-mono text-zinc-400 uppercase">Total Unit BOM Cost</p>
           <p id="econ-bom-curr" class="text-2xl font-mono font-semibold text-zinc-100 mt-1.5">$6,870</p>
-          <p class="text-[11px] font-mono text-zinc-500 mt-1">Feeds Tabs 01, 02, 04, 05</p>
+          <p class="text-[11px] font-mono text-zinc-500 mt-1">Feeds All 7 Modules</p>
         </div>
         <div class="p-5 rounded-lg border border-emerald-500/30 bg-surface">
           <p class="text-[11px] font-mono text-emerald-400 uppercase">Target Optimized BOM</p>
@@ -481,14 +641,14 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- TAB 4: RaaS & BUSINESS STRATEGY            -->
+    <!-- TAB 5: RaaS & BUSINESS STRATEGY            -->
     <!-- ========================================== -->
     <section id="tab-strategy" class="hidden space-y-6">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-borderSubtle pb-5">
         <div>
           <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Monetization Engine // Connected to BOM & Cash Flow</p>
           <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">CapEx vs. RaaS (Robotics-as-a-Service) Modeler</h1>
-          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Payback automatically uses your live BOM from Tab 03. Toggle below to simulate your entire company's Cash Runway and Bank DSCR under RaaS recurring revenue.</p>
+          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Payback automatically uses your live BOM from Tab 04. Toggle below to simulate your entire company's Cash Runway, 5-Year Performance, and Bank DSCR under RaaS.</p>
         </div>
         <button onclick="setModelMode(currentMode === 'capex' ? 'raas' : 'capex')" id="btn-toggle-raas-banner" class="px-4 py-2 rounded text-xs font-mono bg-emerald-500 text-obsidian font-semibold hover:bg-emerald-400 transition-colors">
           Switch Global Engine to RaaS Mode →
@@ -574,11 +734,11 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- TAB 5: BANK LOAN & VC PITCH DECK BUILDER   -->
+    <!-- TAB 6: BANK LOAN & VC PITCH DECK BUILDER   -->
     <!-- ========================================== -->
     <section id="tab-capitaldeck" class="hidden space-y-8">
       <div class="border-b border-borderSubtle pb-5">
-        <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Downstream Capital Packaging // Auto-Fed by Tabs 02–04</p>
+        <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Downstream Capital Packaging // Auto-Fed by Tabs 02–05</p>
         <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">US Bank Debt DSCR & VC Pitch Deck Financial Builder</h1>
         <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Bank DSCR is dynamically calculated from your live Year 1 Gross Cash Flow, while VC Use-of-Funds directly checks whether your inventory allocation covers your Working Capital Trap.</p>
       </div>
@@ -699,13 +859,13 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- TAB 6: A-TO-Z FP&A DESK & PRICING          -->
+    <!-- TAB 7: A-TO-Z FP&A DESK & PRICING          -->
     <!-- ========================================== -->
     <section id="tab-deliverables" class="hidden space-y-8">
       <div class="border-b border-borderSubtle pb-5">
         <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">A-to-Z Fractional FP&A Execution & Pricing</p>
         <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Engagement Architecture & Founding Partner Offer</h1>
-        <p class="text-sm text-zinc-400 mt-1 max-w-2xl">We build this exact interconnected financial engine customized to your startup's BOM, RaaS contracts, bank debt, and VC pitch deck—delivered asynchronously in 48 hours.</p>
+        <p class="text-sm text-zinc-400 mt-1 max-w-2xl">We build this exact interconnected financial engine customized to your startup's BOM, Multi-Year P&L, RaaS contracts, bank debt, and VC pitch deck—delivered asynchronously in 48 hours.</p>
       </div>
 
       <!-- FOUNDING PARTNER PRICING CARD ($1,000 Value for $250) -->
@@ -716,11 +876,11 @@
               <span>FOUNDING PARTNER PILOT // 75% OFF STANDARD RATE</span>
             </div>
             <h2 class="text-2xl font-semibold text-zinc-100">Complete Interconnected Robotics FP&A, Bank & VC Suite</h2>
-            <p class="text-xs text-zinc-400 leading-relaxed">Built for US Seed & Series A hardware founders who want institutional cash runway clarity, BOM costing, and investor/bank financial packages—without $250k/yr executive overhead.</p>
+            <p class="text-xs text-zinc-400 leading-relaxed">Built for US Seed & Series A hardware founders who want institutional cash runway clarity, Monthly/Quarterly/5-Year tracking, BOM costing, and investor/bank financial packages.</p>
 
             <div class="pt-2 space-y-2.5 text-xs">
               <div class="flex items-center justify-between py-2 border-b border-borderSubtle/70">
-                <span class="text-zinc-200 flex items-center"><span class="text-emerald-400 mr-2 font-mono">✓</span>Custom 12-Month Cash Runway & Working Capital Model</span>
+                <span class="text-zinc-200 flex items-center"><span class="text-emerald-400 mr-2 font-mono">✓</span>Custom 12-Month Runway + 5-Year Multi-Period Performance Model</span>
                 <span class="font-mono text-zinc-500">$300 value</span>
               </div>
               <div class="flex items-center justify-between py-2 border-b border-borderSubtle/70">
@@ -759,51 +919,6 @@
           </div>
         </div>
       </div>
-
-      <!-- 30-60-90 Day Roadmap -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-6 rounded-lg border border-borderSubtle bg-surface flex flex-col justify-between">
-          <div>
-            <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-800 text-zinc-300">PHASE 01 // DAYS 1–30</span>
-            <h3 class="text-base font-semibold text-zinc-100 mt-3">Diagnostic & Model Architecture</h3>
-            <ul class="mt-4 space-y-2.5 text-xs text-zinc-400">
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Line-by-line BOM & Assembly Labor Cost Analysis</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Supplier Lead Time & Working Capital Trap Map</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Management separation of R&D OpEx vs. Hardware COGS</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Custom 12-Month & 36-Month Dynamic Cash Flow Model</span></li>
-            </ul>
-          </div>
-          <div class="mt-6 pt-4 border-t border-borderSubtle text-[11px] font-mono text-zinc-500">DELIVERABLE: FULL FP&A DIAGNOSTIC + MODEL</div>
-        </div>
-
-        <div class="p-6 rounded-lg border border-emerald-500/30 bg-surface flex flex-col justify-between">
-          <div>
-            <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400">PHASE 02 // DAYS 31–60</span>
-            <h3 class="text-base font-semibold text-zinc-100 mt-3">Automation & Live Telemetry</h3>
-            <ul class="mt-4 space-y-2.5 text-xs text-zinc-400">
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>24/7 Live Cash Runway & Burn Rate Executive Portal</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Automated management reporting from QuickBooks / ERP</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Weekly Async Founder Memo (Cash Trough & Variance)</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Customer Deposit & Net-60 Vendor Negotiation Models</span></li>
-            </ul>
-          </div>
-          <div class="mt-6 pt-4 border-t border-borderSubtle text-[11px] font-mono text-emerald-400/80">DELIVERABLE: LIVE AUTOMATED FP&A DESK</div>
-        </div>
-
-        <div class="p-6 rounded-lg border border-borderSubtle bg-surface flex flex-col justify-between">
-          <div>
-            <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-800 text-zinc-300">PHASE 03 // DAYS 61–90+</span>
-            <h3 class="text-base font-semibold text-zinc-100 mt-3">Scale & Investor Readiness</h3>
-            <ul class="mt-4 space-y-2.5 text-xs text-zinc-400">
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>VC Pitch Deck Financial Slides & Data Room Index</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>US Bank Loan DSCR & Equipment Financing Schedules</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Clean data handoff & coordination with your US CPA</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Ongoing Flat-Fee Monthly Strategic FP&A Retainer</span></li>
-            </ul>
-          </div>
-          <div class="mt-6 pt-4 border-t border-borderSubtle text-[11px] font-mono text-zinc-500">DELIVERABLE: VC & BANK FINANCIAL READINESS</div>
-        </div>
-      </div>
     </section>
   </main>
 
@@ -823,8 +938,12 @@
     const salesSchedule = [2, 3, 4, 5, 6, 8, 10, 12, 14, 16, 18, 20];
     const extendedSales = [...salesSchedule, 22, 24, 26, 28];
     let ledgerData = [];
+    let monthlyPnL = [];
     let chartInstance = null;
-    let currentMode = 'capex'; // 'capex' or 'raas'
+    let perfChartInstance = null;
+    let multiYearChartInstance = null;
+    let currentMode = 'capex';
+    let currentPerfView = 'quarterly';
 
     let bomItems = [
       { name: "3D LiDAR Sensor (Solid-State)", qty: 1, cost: 1200, lead: 45 },
@@ -838,6 +957,13 @@
     const fmtUSD = (n) => {
       const sign = n < 0 ? '-' : '';
       return sign + '$' + Math.abs(Math.round(n)).toLocaleString('en-US');
+    };
+    const fmtM = (n) => {
+      const sign = n < 0 ? '-' : '';
+      const abs = Math.abs(n);
+      if (abs >= 1000000) return sign + '$' + (abs / 1000000).toFixed(2) + 'M';
+      if (abs >= 1000) return sign + '$' + (abs / 1000).toFixed(0) + 'k';
+      return fmtUSD(n);
     };
 
     function setModelMode(mode) {
@@ -862,8 +988,18 @@
       recalc();
     }
 
+    function setPerfView(view) {
+      currentPerfView = view;
+      ['monthly', 'quarterly', 'halfyearly', 'annual'].forEach(v => {
+        const el = document.getElementById('pv-' + v);
+        el.classList.toggle('subtab-active', v === view);
+        el.classList.toggle('subtab-inactive', v !== view);
+      });
+      renderPerfView();
+    }
+
     function switchTab(tabId) {
-      ['executive', 'simulator', 'economics', 'strategy', 'capitaldeck', 'deliverables'].forEach(t => {
+      ['executive', 'simulator', 'performance', 'economics', 'strategy', 'capitaldeck', 'deliverables'].forEach(t => {
         document.getElementById('tab-' + t).classList.toggle('hidden', t !== tabId);
         const btn = document.getElementById('btn-' + t);
         btn.classList.toggle('tab-active', t === tabId);
@@ -940,6 +1076,95 @@
       recalc();
     }
 
+    function renderPerfView() {
+      let rows = [];
+      const titles = {
+        monthly: ["FY1 Monthly Revenue vs. Net EBITDA", "Financial Year 1 — Month-by-Month Breakdown (M01–M12)"],
+        quarterly: ["FY1 Quarterly Revenue vs. Net EBITDA", "Financial Year 1 — Quarterly Breakdown (Q1–Q4)"],
+        halfyearly: ["FY1 Half-Yearly (H1 vs. H2) Performance", "Financial Year 1 — Six-Month Breakdown (H1 vs. H2)"],
+        annual: ["FY1 Full Annual P&L Summary", "Financial Year 1 — Consolidated Annual Summary"]
+      };
+      document.getElementById('perf-chart-title').textContent = titles[currentPerfView][0];
+      document.getElementById('perf-table-title').textContent = titles[currentPerfView][1];
+
+      if (currentPerfView === 'monthly') {
+        rows = monthlyPnL.map(m => ({ ...m }));
+      } else if (currentPerfView === 'quarterly') {
+        for (let q = 0; q < 4; q++) {
+          const slice = monthlyPnL.slice(q * 3, q * 3 + 3);
+          rows.push({
+            label: `Q${q + 1} (M${q*3+1}–M${q*3+3})`,
+            units: slice.reduce((s, x) => s + x.units, 0),
+            rev: slice.reduce((s, x) => s + x.rev, 0),
+            cogs: slice.reduce((s, x) => s + x.cogs, 0),
+            gp: slice.reduce((s, x) => s + x.gp, 0),
+            opex: slice.reduce((s, x) => s + x.opex, 0),
+            ebitda: slice.reduce((s, x) => s + x.ebitda, 0)
+          });
+        }
+      } else if (currentPerfView === 'halfyearly') {
+        for (let h = 0; h < 2; h++) {
+          const slice = monthlyPnL.slice(h * 6, h * 6 + 6);
+          rows.push({
+            label: `H${h + 1} (Months ${h*6+1}–${h*6+6})`,
+            units: slice.reduce((s, x) => s + x.units, 0),
+            rev: slice.reduce((s, x) => s + x.rev, 0),
+            cogs: slice.reduce((s, x) => s + x.cogs, 0),
+            gp: slice.reduce((s, x) => s + x.gp, 0),
+            opex: slice.reduce((s, x) => s + x.opex, 0),
+            ebitda: slice.reduce((s, x) => s + x.ebitda, 0)
+          });
+        }
+      } else {
+        rows.push({
+          label: 'FY1 Full Year Total',
+          units: monthlyPnL.reduce((s, x) => s + x.units, 0),
+          rev: monthlyPnL.reduce((s, x) => s + x.rev, 0),
+          cogs: monthlyPnL.reduce((s, x) => s + x.cogs, 0),
+          gp: monthlyPnL.reduce((s, x) => s + x.gp, 0),
+          opex: monthlyPnL.reduce((s, x) => s + x.opex, 0),
+          ebitda: monthlyPnL.reduce((s, x) => s + x.ebitda, 0)
+        });
+      }
+
+      document.getElementById('perf-table-body').innerHTML = rows.map(r => `
+        <tr class="hover:bg-zinc-900/50 transition-colors">
+          <td class="py-2.5 px-4 text-zinc-200 font-medium">${r.label}</td>
+          <td class="py-2.5 px-4 text-right text-zinc-400">${r.units}</td>
+          <td class="py-2.5 px-4 text-right text-zinc-200">${fmtUSD(r.rev)}</td>
+          <td class="py-2.5 px-4 text-right text-zinc-400">${fmtUSD(r.cogs)}</td>
+          <td class="py-2.5 px-4 text-right text-zinc-300">${fmtUSD(r.gp)}</td>
+          <td class="py-2.5 px-4 text-right text-zinc-400">${fmtUSD(r.opex)}</td>
+          <td class="py-2.5 px-4 text-right font-semibold ${r.ebitda >= 0 ? 'text-emerald-400' : 'text-rose-400'}">${fmtUSD(r.ebitda)}</td>
+        </tr>
+      `).join('');
+
+      const ctx = document.getElementById('perfChart').getContext('2d');
+      if (perfChartInstance) perfChartInstance.destroy();
+      perfChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: rows.map(r => r.label.split(' ')[0]),
+          datasets: [
+            { label: 'Revenue', data: rows.map(r => Math.round(r.rev)), backgroundColor: '#3F3F46', borderRadius: 4 },
+            { label: 'Net EBITDA', data: rows.map(r => Math.round(r.ebitda)), backgroundColor: rows.map(r => r.ebitda >= 0 ? '#10B981' : '#F43F5E'), borderRadius: 4 }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { labels: { color: '#A1A1AA', font: { family: 'JetBrains Mono', size: 10 } } },
+            tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${fmtUSD(c.parsed.y)}` } }
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: '#71717A', font: { family: 'JetBrains Mono', size: 10 } } },
+            y: { grid: { color: '#18181B' }, ticks: { color: '#71717A', font: { family: 'JetBrains Mono', size: 10 }, callback: v => fmtM(v) } }
+          }
+        }
+      });
+    }
+
     function recalc() {
       const startCash = +document.getElementById('in-cash').value;
       const bom = +document.getElementById('in-bom').value;
@@ -950,7 +1175,6 @@
       const depositPct = +document.getElementById('in-deposit').value;
       const valuationM = +document.getElementById('in-valuation').value;
 
-      // RaaS calculations
       const raasFee = +document.getElementById('in-raas-fee').value;
       const raasTerm = +document.getElementById('in-raas-term').value;
       const raasMaint = +document.getElementById('in-raas-maint').value;
@@ -971,7 +1195,6 @@
       document.getElementById('out-raas-payback').textContent = netMonthly > 0 ? `${payback.toFixed(1)} Months` : 'N/A';
       document.getElementById('out-raas-bom-ref').textContent = `Based on ${fmtUSD(bom)} BOM`;
 
-      // Baseline labels
       document.getElementById('val-cash').textContent = fmtUSD(startCash);
       document.getElementById('val-bom').textContent = fmtUSD(bom);
       document.getElementById('val-price').textContent = fmtUSD(price);
@@ -982,7 +1205,6 @@
       document.getElementById('val-valuation').textContent = `$${valuationM}.0M`;
 
       const optBom = bom * (1 - bomOptPct / 100);
-      const grossProfit = currentMode === 'capex' ? (price - bom) : (raasLTV - raasTotalCost);
       const margin = currentMode === 'capex'
         ? (price > 0 ? ((price - bom) / price) * 100 : 0)
         : raasMargin;
@@ -1000,6 +1222,7 @@
       let cumulativeFleet = 0;
       let totalYear1Rev = 0;
       ledgerData = [];
+      monthlyPnL = [];
 
       const labels = [], paperArr = [], realArr = [], cfoArr = [];
 
@@ -1008,33 +1231,34 @@
         const advUnits = extendedSales[i + leadMo];
         cumulativeFleet += units;
 
-        // Interconnected Revenue & Direct Cost based on Global Mode (CapEx vs RaaS)
-        const rev = currentMode === 'capex'
-          ? (units * price)
-          : (cumulativeFleet * raasFee);
+        const rev = currentMode === 'capex' ? (units * price) : (cumulativeFleet * raasFee);
         const recurringMaint = currentMode === 'capex' ? 0 : (cumulativeFleet * raasMaint);
+        const directCogs = (units * bom) + recurringMaint;
+        const gp = rev - directCogs;
+        const ebitda = gp - opex;
 
         totalYear1Rev += rev;
-        totalYear1GrossCash += (rev - units * bom - recurringMaint);
+        totalYear1GrossCash += gp;
 
-        paperCash += (rev - units * bom - recurringMaint - opex);
-        realCash += (rev - advUnits * bom - recurringMaint - opex);
+        paperCash += ebitda;
+        realCash += (rev - (advUnits * bom) - recurringMaint - opex);
 
         if (realCash < minRealCash) {
           minRealCash = realCash;
           troughMonth = `Month ${String(i + 1).padStart(2, '0')}`;
         }
 
-        // In RaaS mode, deposit applies to 3-month upfront subscription commitment; in CapEx, full unit price
         const contractBase = currentMode === 'capex' ? price : (raasFee * 3);
         const depositIn = (advUnits * contractBase) * (depositPct / 100);
         const remRev = rev * (1 - depositPct / 100);
-        cfoCash += (remRev + depositIn - advUnits * optBom - recurringMaint - opex);
+        cfoCash += (remRev + depositIn - (advUnits * optBom) - recurringMaint - opex);
 
         labels.push(`M${String(i + 1).padStart(2, '0')}`);
         paperArr.push(Math.round(paperCash));
         realArr.push(Math.round(realCash));
         cfoArr.push(Math.round(cfoCash));
+
+        monthlyPnL.push({ label: `M${String(i + 1).padStart(2, '0')}`, units, rev, cogs: directCogs, gp, opex, ebitda });
 
         ledgerData.push({
           month: `Month ${String(i + 1).padStart(2, '0')}`,
@@ -1046,7 +1270,100 @@
         });
       }
 
-      // Bank Loan DSCR Calculations (Interconnected with Year 1 Gross Cash & BOM)
+      // Render Tab 3 (FY1 Performance + 5-Year Since Inception)
+      renderPerfView();
+
+      const yoyGrowth = +document.getElementById('in-yoy-growth').value;
+      const opexGrowth = +document.getElementById('in-opex-growth').value;
+      document.getElementById('val-yoy-growth').textContent = `${yoyGrowth}% / yr`;
+      document.getElementById('val-opex-growth').textContent = `${opexGrowth}% / yr`;
+
+      let multiRows = [];
+      let yrUnits = salesSchedule.reduce((a, b) => a + b, 0);
+      let yrOpex = opex * 12;
+      let cumFleet5Yr = 0;
+      let cumRev5Yr = 0;
+      let cumEbitda5Yr = 0;
+      let prevRev = 0;
+
+      for (let y = 1; y <= 5; y++) {
+        if (y > 1) {
+          yrUnits = Math.round(yrUnits * (1 + yoyGrowth / 100));
+          yrOpex = yrOpex * (1 + opexGrowth / 100);
+        }
+        cumFleet5Yr += yrUnits;
+        // Slight BOM efficiency gain of 5% per year as volume scales
+        const yrBom = bom * Math.pow(0.95, y - 1);
+        const yrRev = y === 1
+          ? totalYear1Rev
+          : (currentMode === 'capex' ? (yrUnits * price) : (cumFleet5Yr * raasFee * 12));
+        const yrCogs = (yrUnits * yrBom) + (currentMode === 'capex' ? 0 : (cumFleet5Yr * raasMaint * 12));
+        const yrGp = yrRev - yrCogs;
+        const yrGm = yrRev > 0 ? (yrGp / yrRev) * 100 : 0;
+        const yrEbitda = yrGp - yrOpex;
+        const yoyPct = y === 1 ? null : ((yrRev - prevRev) / Math.max(1, prevRev)) * 100;
+
+        cumRev5Yr += yrRev;
+        cumEbitda5Yr += yrEbitda;
+        prevRev = yrRev;
+
+        multiRows.push({
+          year: `Year ${y} (FY${2025 + y})`,
+          units: yrUnits,
+          rev: yrRev,
+          yoy: yoyPct,
+          gm: yrGm,
+          ebitda: yrEbitda
+        });
+      }
+
+      document.getElementById('kpi-5yr-rev').textContent = fmtM(cumRev5Yr);
+      document.getElementById('kpi-5yr-ebitda').textContent = fmtM(cumEbitda5Yr);
+      document.getElementById('kpi-5yr-margin').textContent = `${(cumRev5Yr > 0 ? (cumEbitda5Yr / cumRev5Yr) * 100 : 0).toFixed(1)}% Avg EBITDA Margin`;
+      document.getElementById('kpi-5yr-units').textContent = `${cumFleet5Yr.toLocaleString('en-US')} Robots`;
+      document.getElementById('kpi-y5-rev').textContent = fmtM(multiRows[4].rev);
+      document.getElementById('strip-5yr').textContent = fmtM(cumRev5Yr);
+
+      document.getElementById('multiyear-body').innerHTML = multiRows.map(r => `
+        <tr class="hover:bg-zinc-900/50 transition-colors">
+          <td class="py-2.5 px-4 text-zinc-200 font-medium">${r.year}</td>
+          <td class="py-2.5 px-4 text-right text-zinc-400">${r.units.toLocaleString('en-US')}</td>
+          <td class="py-2.5 px-4 text-right text-zinc-200">${fmtM(r.rev)}</td>
+          <td class="py-2.5 px-4 text-right text-emerald-400">${r.yoy === null ? 'Launch' : '+' + r.yoy.toFixed(0) + '%'}</td>
+          <td class="py-2.5 px-4 text-right text-zinc-300">${r.gm.toFixed(1)}%</td>
+          <td class="py-2.5 px-4 text-right font-semibold ${r.ebitda >= 0 ? 'text-emerald-400' : 'text-rose-400'}">${fmtM(r.ebitda)}</td>
+          <td class="py-2.5 px-4 text-right">
+            <span class="px-2 py-0.5 rounded text-[10px] ${r.ebitda >= 0 ? 'bg-emerald-500/15 text-emerald-400' : 'bg-rose-500/15 text-rose-400'}">${r.ebitda >= 0 ? 'PROFITABLE' : 'INVESTING'}</span>
+          </td>
+        </tr>
+      `).join('');
+
+      const myCtx = document.getElementById('multiYearChart').getContext('2d');
+      if (multiYearChartInstance) multiYearChartInstance.destroy();
+      multiYearChartInstance = new Chart(myCtx, {
+        type: 'bar',
+        data: {
+          labels: multiRows.map(r => r.year.split(' ')[0] + ' ' + r.year.split(' ')[1]),
+          datasets: [
+            { label: 'Annual Revenue', data: multiRows.map(r => Math.round(r.rev)), backgroundColor: '#52525B', borderRadius: 4 },
+            { label: 'Net EBITDA', data: multiRows.map(r => Math.round(r.ebitda)), backgroundColor: '#10B981', borderRadius: 4 }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { labels: { color: '#A1A1AA', font: { family: 'JetBrains Mono', size: 10 } } },
+            tooltip: { callbacks: { label: (c) => ` ${c.dataset.label}: ${fmtM(c.parsed.y)}` } }
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: '#71717A', font: { family: 'JetBrains Mono', size: 10 } } },
+            y: { grid: { color: '#18181B' }, ticks: { color: '#71717A', font: { family: 'JetBrains Mono', size: 10 }, callback: v => fmtM(v) } }
+          }
+        }
+      });
+
+      // Bank Loan DSCR
       const loanAmt = +document.getElementById('in-loan-amt').value;
       const loanApr = +document.getElementById('in-loan-apr').value;
       const loanTerm = +document.getElementById('in-loan-term').value;
@@ -1079,7 +1396,7 @@
       document.getElementById('loan-bridge-text').innerHTML =
         `Under the active <strong class="text-zinc-200">${currentMode === 'capex' ? 'CapEx Direct' : 'RaaS Subscription'}</strong> model with a <strong class="text-zinc-200">${fmtUSD(bom)}</strong> unit BOM, Year 1 Gross Operating Cash Flow of <strong class="text-zinc-200">${fmtUSD(totalYear1GrossCash)}</strong> covers the <strong class="text-zinc-200">${fmtUSD(annualDebtService)}</strong> annual debt service by <strong class="${dscr >= 1.25 ? 'text-emerald-400' : 'text-rose-400'}">${dscr.toFixed(2)}x</strong>, directly financing <strong class="text-zinc-200">${robotsFinanced} production units</strong> with zero equity dilution.`;
 
-      // VC Pitch Deck Use of Funds Calculations (Cross-checked with Working Capital Trap)
+      // VC Pitch Deck Use of Funds
       const vcRaise = +document.getElementById('in-vc-raise').value;
       const vcRdPct = +document.getElementById('in-vc-rd').value;
       let vcMfgPct = +document.getElementById('in-vc-mfg').value;
@@ -1115,11 +1432,9 @@
       const annualBomSavings = (bom - optBom) * totalUnits;
       const bottleneckItem = bomItems.reduce((prev, curr) => (curr.lead > prev.lead ? curr : prev), bomItems[0]);
 
-      // Update Global Top Interconnection Strip
       document.getElementById('strip-bom').textContent = fmtUSD(bom);
       document.getElementById('strip-lead').textContent = `${leadMo * 30}d`;
       document.getElementById('strip-dscr').textContent = `${dscr.toFixed(2)}x`;
-      document.getElementById('strip-vc').textContent = `+${addedRunwayMo.toFixed(1)} Mo`;
 
       // Update Tab 1 Executive Dashboard
       document.getElementById('exec-start-cash').textContent = fmtUSD(startCash);
@@ -1140,12 +1455,11 @@
         `Driven by a <strong class="text-rose-400">${leadMo * 30}-day</strong> procurement cycle (bottlenecked by <strong class="text-zinc-100">${bottleneckItem ? bottleneckItem.name : 'core components'}</strong> at ${fmtUSD(bom)}/unit BOM), Month 12 real bank cash diverges from paper forecasts by <strong class="text-rose-400">${fmtUSD(trappedAbs)}</strong>. Executing <strong class="text-emerald-400">${bomOptPct}% BOM compression</strong> and <strong class="text-emerald-400">${depositPct}% upfront deposits</strong> unlocks <strong class="text-emerald-400">${fmtUSD(unlocked)}</strong> in liquid cash.`;
 
       document.getElementById('para-bom-mandate').innerHTML =
-        `At a live BOM of <strong class="text-zinc-100">${fmtUSD(bom)}</strong> (${bomItems.length} raw materials), CapEx sales yield <strong class="text-zinc-100">${((price - bom)/price*100).toFixed(1)}%</strong> margin, while a 36-month RaaS contract at ${fmtUSD(raasFee)}/mo recovers hardware BOM in <strong class="text-emerald-400">${payback.toFixed(1)} months</strong> and generates <strong class="text-emerald-400">${fmtUSD(raasLTV)} LTV</strong> (${raasMargin.toFixed(1)}% net margin).`;
+        `Scaling at <strong class="text-emerald-400">${yoyGrowth}% YoY</strong> from launch, the company reaches <strong class="text-zinc-100">${fmtM(multiRows[4].rev)}</strong> in Year 5 annual revenue and <strong class="text-emerald-400">${fmtM(cumRev5Yr)}</strong> cumulative 5-year revenue across ${cumFleet5Yr.toLocaleString('en-US')} robots. Under RaaS (${fmtUSD(raasFee)}/mo), hardware BOM pays back in <strong class="text-emerald-400">${payback.toFixed(1)} months</strong>.`;
 
       document.getElementById('para-capital-strategy').innerHTML =
         `Internal working capital optimization protects <strong class="text-emerald-400">${equitySaved.toFixed(2)}% founder equity</strong>. Externally, Year 1 cash generation supports a <strong class="text-zinc-100">${dscr.toFixed(2)}x DSCR</strong> on a ${fmtUSD(loanAmt)} equipment facility (funding ${robotsFinanced} units), while a <strong class="text-emerald-400">${fmtUSD(vcRaise)}</strong> equity raise adds <strong class="text-emerald-400">+${addedRunwayMo.toFixed(1)} months</strong> of runway and covers ${wcCoverageRatio.toFixed(1)}x of supply chain inventory needs.`;
 
-      // Update Tab 2 & 3 KPIs
       document.getElementById('kpi-margin').textContent = `${margin.toFixed(1)}%`;
       document.getElementById('kpi-margin-opt').textContent = `${optMargin.toFixed(1)}% Optimized`;
       document.getElementById('kpi-breakeven').textContent = (price - bom) > 0 ? `${breakeven.toFixed(1)}/mo` : 'N/A';
