@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BizFin | RoboScale Institutional CFO Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: '#09090b',
+            surface: '#111114',
+            borderline: '#27272a',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #09090b; color: #f4f4f5; font-feature-settings: "cv02","cv03","cv04","cv11"; }
+    .tabular { font-variant-numeric: tabular-nums; }
+    input[type="range"] { accent-color: #10b981; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #09090b; }
+    ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-emerald-500/30 selection:text-emerald-200">
+
+  <!-- Top Navigation Bar -->
+  <header class="border-b border-borderline bg-obsidian/80 backdrop-blur-md sticky top-0 z-30">
+    <div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center font-mono text-emerald-400 font-semibold text-sm">BF</div>
+        <div>
+          <span class="font-semibold tracking-tight text-white">BizFin</span>
+          <span class="text-zinc-500 mx-2">/</span>
+          <span class="text-sm text-zinc-400 font-medium">RoboScale Financial Engineering Desk</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> US HARDWARE & ROBOTICS
+        </span>
+        <button onclick="exportCSV()" class="text-xs font-medium bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-borderline px-3 py-1.5 rounded transition">
+          Export Model (.CSV)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-[1440px] mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+    <!-- Left Control Panel (Assumptions) -->
+    <aside class="lg:col-span-3 space-y-6">
+      <div class="bg-surface border border-borderline rounded-lg p-5 space-y-5">
+        <div class="flex items-center justify-between border-b border-borderline pb-3">
+          <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-400">01 / Baseline Parameters</h2>
+          <button onclick="resetDefaults()" class="text-[11px] text-zinc-500 hover:text-zinc-300">Reset</button>
+        </div>
+
+        <!-- Starting Cash -->
+        <div>
+          <div class="flex justify-between text-xs mb-1.5">
+            <label class="text-zinc-400">Starting Cash in Bank</label>
+            <span id="val-cash" class="font-mono text-white tabular">$2,000,000</span>
+          </div>
+          <input id="in-cash" type="range" min="500000" max="10000000" step="100000" value="2000000" class="w-full h-1.5 bg-zinc-800 rounded-lg cursor-pointer">
+        </div>
+
+        <!-- BOM Cost -->
+        <div>
+          <div class="flex justify-between text-xs mb-1.5">
+            <label class="text-zinc-400">Unit Cost (BOM + Labor)</label>
+            <span id="val-bom" class="font-mono text-white tabular">$6,870</span>
+          </div>
+          <input id="in-bom" type="range" min="2000" max="20000" step="100" value="6870" class="w-full h-1.5 bg-zinc-800 rounded-lg cursor-pointer">
+        </div>
+
+        <!-- Selling Price -->
+        <div>
+          <div class="flex justify-between text-xs mb-1.5">
+            <label class="text-zinc-400">Selling Price / Robot</label>
+            <span id="val-price" class="font-mono text-white tabular">$15,000</span>
+          </div>
+          <input id="in-price" type="range" min="5000" max="40000" step="500" value="15000" class="w-full h-1.5 bg-zinc-800 rounded-lg cursor-pointer">
+        </div>
+
+        <!-- Monthly OpEx -->
+        <div>
+          <div class="flex justify-between text-xs mb-1.5">
+            <label class="text-zinc-400">Fixed Monthly OpEx</label>
+            <span id="val-opex" class="font-mono text-white tabular">$100,000</span>
+          </div>
+          <input id="in-opex" type="range" min="30000" max="400000" step="5000" value="100000" class="w-full h-1.5 bg-zinc-800 rounded-lg cursor-pointer">
+        </div>
+
+        <!-- Supplier Lead Time -->
+        <div>
+          <div class="flex justify-between text-xs mb-1.5">
+            <label class="text-zinc-400">Supplier Lead Time</label>
+            <span id="val-lead" class="font-mono text-amber-400 tabular">60 Days (2 Mo)</span>
+          </div>
+          <input id="in-lead" type="range" min="0" max="3" step="1" value="2" class="w-full h-1.5 bg-zinc-800 rounded-lg cursor-pointer">
+        </div>
+      </div>
+
+      <!-- CFO Engineering Levers -->
+      <div class="bg-surface border border-emerald-500/20 rounded-lg p-5 space-y-5">
+        <div class="border-b border-borderline pb-3">
+          <h2 class="text-xs font-mono uppercase tracking-wider text-emerald-400">02 / BizFin CFO Levers</h2>
+        </div>
+
+        <div>
+          <div class="flex justify-between text-xs mb-1.5">
+            <label class="text-zinc-400">Target BOM Optimization</label>
+            <span id="val-bom-opt" class="font-mono text-emerald-400 tabular">15%</span>
+          </div>
+          <input id="in-bom-opt" type="range" min="0" max="30" step="1" value="15" class="w-full h-1.5 bg-zinc-800 rounded-lg cursor-pointer">
+        </div>
+
+        <div>
+          <div class="flex justify-between text-xs mb-1.5">
+            <label class="text-zinc-400">Upfront Customer Deposit</label>
+            <span id="val-deposit" class="font-mono text-emerald-400 tabular">30%</span>
+          </div>
+          <input id="in-deposit" type="range" min="0" max="50" step="5" value="30" class="w-full h-1.5 bg-zinc-800 rounded-lg cursor-pointer">
+        </div>
+
+        <div>
+          <div class="flex justify-between text-xs mb-1.5">
+            <label class="text-zinc-400">Est. Pre-Money Valuation</label>
+            <span id="val-val" class="font-mono text-zinc-300 tabular">$12.0M</span>
+          </div>
+          <input id="in-val" type="range" min="4" max="40" step="1" value="12" class="w-full h-1.5 bg-zinc-800 rounded-lg cursor-pointer">
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right Main Workspace -->
+    <main class="lg:col-span-9 space-y-6">
+
+      <!-- Tab Switcher -->
+      <div class="flex items-center gap-2 border-b border-borderline pb-px overflow-x-auto">
+        <button onclick="switchTab('sim')" id="tab-sim" class="px-4 py-2.5 text-sm font-medium border-b-2 border-emerald-400 text-white whitespace-nowrap">
+          Cash & Working Capital
+        </button>
+        <button onclick="switchTab('unit')" id="tab-unit" class="px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-zinc-400 hover:text-zinc-200 whitespace-nowrap">
+          Unit Economics & BOM
+        </button>
+        <button onclick="switchTab('scope')" id="tab-scope" class="px-4 py-2.5 text-sm font-medium border-b-2 border-transparent text-zinc-400 hover:text-zinc-200 whitespace-nowrap">
+          Engagement Scope (A–Z)
+        </button>
+      </div>
+
+      <!-- TAB 1: CASH & WORKING CAPITAL -->
+      <section id="view-sim" class="space-y-6">
+        <!-- KPI Row -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+          <div class="bg-surface border border-borderline rounded-lg p-4">
+            <p class="text-xs text-zinc-400 font-medium">Gross Margin</p>
+            <p id="kpi-margin" class="text-2xl font-mono font-semibold text-white mt-1 tabular">54.2%</p>
+            <p id="kpi-margin-sub" class="text-xs font-mono text-emerald-400 mt-1">+6.9% post-optimization</p>
+          </div>
+          <div class="bg-surface border border-borderline rounded-lg p-4">
+            <p class="text-xs text-zinc-400 font-medium">Cash Trapped (Month 12)</p>
+            <p id="kpi-trapped" class="text-2xl font-mono font-semibold text-rose-400 mt-1 tabular">-$281,670</p>
+            <p class="text-xs text-zinc-500 mt-1">Locked in supplier lead time</p>
+          </div>
+          <div class="bg-surface border border-emerald-500/30 rounded-lg p-4">
+            <p class="text-xs text-emerald-400 font-medium">Cash Unlocked by BizFin</p>
+            <p id="kpi-unlocked" class="text-2xl font-mono font-semibold text-emerald-400 mt-1 tabular">+$412,000</p>
+            <p class="text-xs text-zinc-400 mt-1">Via BOM + deposit engineering</p>
+          </div>
+          <div class="bg-surface border border-borderline rounded-lg p-4">
+            <p class="text-xs text-zinc-400 font-medium">Equity Dilution Saved</p>
+            <p id="kpi-dilution" class="text-2xl font-mono font-semibold text-white mt-1 tabular">3.43%</p>
+            <p class="text-xs text-zinc-500 mt-1">Non-dilutive capital preserved</p>
+          </div>
+        </div>
+
+        <!-- Chart Card -->
+        <div class="bg-surface border border-borderline rounded-lg p-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="text-sm font-semibold text-white">12-Month Cash Trajectory: Paper Forecast vs. Reality vs. BizFin</h3>
+              <p class="text-xs text-zinc-400 mt-0.5">Modeling the impact of advance supplier payments and working capital restructuring.</p>
+            </div>
+          </div>
+          <div class="h-80 w-full">
+            <canvas id="cashChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Executive Insight Banner -->
+        <div class="bg-zinc-900/60 border border-borderline rounded-lg p-4 text-sm text-zinc-300 leading-relaxed">
+          <span class="font-mono text-xs uppercase text-emerald-400 mr-2">[CFO DIAGNOSIS]</span>
+          <span id="cfo-diagnosis"></span>
+        </div>
+
+        <!-- Data
