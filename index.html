@@ -92,10 +92,9 @@
         <span class="hidden md:inline-flex items-center px-2.5 py-1 rounded text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
           US HARDWARE & ROBOTICS FP&A DESK
         </span>
-        <a href="mailto:connect.bizfin@gmail.com?subject=US%20Robotics%20Working%20Capital%20Audit%20Request&body=Hi%20BizFin%20Team%2C%0A%0AWe%20are%20a%20US-based%20robotics%20startup%20and%20would%20like%20to%20request%20a%20custom%20Working%20Capital%20%26%20BOM%20Diagnostic."
-           class="px-3.5 py-1.5 rounded text-xs font-medium bg-zinc-100 text-obsidian hover:bg-zinc-200 transition-colors">
-          Request Custom Diagnostic
-        </a>
+        <button onclick="switchTab('deliverables')" class="px-3.5 py-1.5 rounded text-xs font-medium bg-zinc-100 text-obsidian hover:bg-zinc-200 transition-colors">
+          View Pricing ($250 Pilot)
+        </button>
       </div>
     </div>
 
@@ -105,7 +104,7 @@
       <button onclick="switchTab('simulator')" id="btn-simulator" class="py-3 tab-inactive whitespace-nowrap transition-colors">02. Capital & Runway Engine</button>
       <button onclick="switchTab('economics')" id="btn-economics" class="py-3 tab-inactive whitespace-nowrap transition-colors">03. BOM & Raw Materials</button>
       <button onclick="switchTab('strategy')" id="btn-strategy" class="py-3 tab-inactive whitespace-nowrap transition-colors">04. RaaS & Business Strategy</button>
-      <button onclick="switchTab('deliverables')" id="btn-deliverables" class="py-3 tab-inactive whitespace-nowrap transition-colors">05. A-to-Z FP&A Desk</button>
+      <button onclick="switchTab('deliverables')" id="btn-deliverables" class="py-3 tab-inactive whitespace-nowrap transition-colors">05. A-to-Z Desk & Pricing</button>
     </div>
   </header>
 
@@ -527,7 +526,6 @@
         </div>
       </div>
 
-      <!-- Operational & Working Capital Playbooks -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div class="p-5 rounded-lg border border-borderSubtle bg-surface space-y-2.5">
           <span class="text-[10px] font-mono text-emerald-400 uppercase">Playbook 01 // Cash Conversion</span>
@@ -548,15 +546,70 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- TAB 5: A-TO-Z FP&A DESK                    -->
+    <!-- TAB 5: A-TO-Z FP&A DESK & PRICING          -->
     <!-- ========================================== -->
     <section id="tab-deliverables" class="hidden space-y-8">
       <div class="border-b border-borderSubtle pb-5">
-        <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">A-to-Z Fractional FP&A Execution</p>
-        <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Engagement Architecture & Deliverables</h1>
+        <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">A-to-Z Fractional FP&A Execution & Pricing</p>
+        <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Engagement Architecture & Founding Partner Offer</h1>
         <p class="text-sm text-zinc-400 mt-1 max-w-2xl">We operate as an asynchronous, automated Financial Planning & Analysis (FP&A) Desk for US robotics startups—working seamlessly alongside your US CPA and legal counsel.</p>
       </div>
 
+      <!-- FOUNDING PARTNER PRICING CARD ($1,000 Value for $250) -->
+      <div class="rounded-xl border border-emerald-500/40 bg-gradient-to-br from-surface via-emerald-950/15 to-surface p-6 md:p-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded text-[11px] font-mono bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+              <span>FOUNDING PARTNER PILOT // 75% OFF STANDARD RATE</span>
+            </div>
+            <h2 class="text-2xl font-semibold text-zinc-100">Complete Robotics FP&A & Working Capital Suite</h2>
+            <p class="text-xs text-zinc-400 leading-relaxed">Built for US Seed & Series A hardware founders who want institutional-grade cash runway clarity, BOM costing, and RaaS modeling—without $250k/yr executive overhead.</p>
+
+            <!-- Value Stack Breakdown -->
+            <div class="pt-2 space-y-2.5 text-xs">
+              <div class="flex items-center justify-between py-2 border-b border-borderSubtle/70">
+                <span class="text-zinc-200 flex items-center"><span class="text-emerald-400 mr-2 font-mono">✓</span>Custom 12-Month Cash Runway & Working Capital Model</span>
+                <span class="font-mono text-zinc-500">$350 value</span>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b border-borderSubtle/70">
+                <span class="text-zinc-200 flex items-center"><span class="text-emerald-400 mr-2 font-mono">✓</span>Line-by-Line Raw Material (BOM) & Supplier Lead-Time Audit</span>
+                <span class="font-mono text-zinc-500">$250 value</span>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b border-borderSubtle/70">
+                <span class="text-zinc-200 flex items-center"><span class="text-emerald-400 mr-2 font-mono">✓</span>CapEx vs. RaaS Unit Economics & Payback Strategy Blueprint</span>
+                <span class="font-mono text-zinc-500">$200 value</span>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b border-borderSubtle/70">
+                <span class="text-zinc-200 flex items-center"><span class="text-emerald-400 mr-2 font-mono">✓</span>Private Executive Board Memo Dashboard + Async Founder Memo</span>
+                <span class="font-mono text-zinc-500">$200 value</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price Box -->
+          <div class="lg:col-span-5 p-6 rounded-lg border border-borderSubtle bg-obsidian/90 flex flex-col justify-between space-y-6">
+            <div>
+              <p class="text-[11px] font-mono text-zinc-400 uppercase tracking-wider">Total Deliverable Value</p>
+              <div class="flex items-baseline space-x-3 mt-2">
+                <span class="text-4xl font-mono font-bold text-emerald-400">$250</span>
+                <span class="text-lg font-mono text-zinc-500 line-through">$1,000</span>
+                <span class="text-xs font-mono text-zinc-400">/ engagement</span>
+              </div>
+              <p class="text-[11px] text-zinc-400 mt-2">Flat-fee transparent pricing. Zero commissions, zero hidden retainers, 100% asynchronous US-friendly delivery.</p>
+            </div>
+
+            <div class="space-y-3">
+              <a href="mailto:connect.bizfin@gmail.com?subject=Claiming%20%24250%20Founding%20Partner%20FP%26A%20Suite%20(%241%2C000%20Value)&body=Hi%20BizFin%20Team%2C%0A%0AWe%20are%20a%20US%20robotics%20startup%20and%20would%20like%20to%20claim%20the%20%24250%20Founding%20Partner%20FP%26A%20%26%20Working%20Capital%20Suite%20(%241%2C000%20value).%0A%0ACompany%20Name%3A%20%0ACurrent%20Stage%20(Pre-Seed%2FSeed%2FSeries%20A)%3A%20"
+                 class="block w-full py-3 px-4 rounded text-center text-xs font-semibold bg-emerald-500 text-obsidian hover:bg-emerald-400 transition-colors">
+                Claim $250 Founding Offer →
+              </a>
+              <p class="text-[10px] font-mono text-center text-zinc-500">DIRECT EMAIL: connect.bizfin@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 30-60-90 Day Roadmap -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="p-6 rounded-lg border border-borderSubtle bg-surface flex flex-col justify-between">
           <div>
@@ -600,18 +653,6 @@
           <div class="mt-6 pt-4 border-t border-borderSubtle text-[11px] font-mono text-zinc-500">DELIVERABLE: SERIES A FINANCIAL READINESS</div>
         </div>
       </div>
-
-      <div class="p-8 rounded-lg border border-borderSubtle bg-gradient-to-r from-surface via-zinc-900 to-surface flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div>
-          <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest">Complimentary Diagnostic</p>
-          <h2 class="text-xl font-semibold text-zinc-100 mt-1">Get a Custom Working Capital & BOM Diagnostic</h2>
-          <p class="text-xs text-zinc-400 mt-1.5 max-w-xl">Send us your baseline BOM, OpEx, and lead time assumptions. Within 48 hours, our desk will return a private 12-month liquidity diagnostic—zero commitment.</p>
-        </div>
-        <a href="mailto:connect.bizfin@gmail.com?subject=US%20Robotics%20Working%20Capital%20Diagnostic%20Request&body=Hi%20BizFin%20Team%2C%0A%0AI%20explored%20the%20US%20Robotics%20FP%26A%20OS%20and%20would%20like%20to%20request%20a%20custom%20Working%20Capital%20Diagnostic%20for%20our%20startup."
-           class="px-5 py-2.5 rounded text-xs font-semibold bg-zinc-100 text-obsidian hover:bg-zinc-200 transition-colors text-center shrink-0">
-          Email connect.bizfin@gmail.com
-        </a>
-      </div>
     </section>
   </main>
 
@@ -654,6 +695,7 @@
         btn.classList.toggle('tab-active', t === tabId);
         btn.classList.toggle('tab-inactive', t !== tabId);
       });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function renderBOMTable() {
@@ -819,7 +861,6 @@
       const annualBomSavings = (bom - optBom) * totalUnits;
       const bottleneckItem = bomItems.reduce((prev, curr) => (curr.lead > prev.lead ? curr : prev), bomItems[0]);
 
-      // Update Tab 1 Executive Dashboard
       document.getElementById('exec-start-cash').textContent = fmtUSD(startCash);
       document.getElementById('exec-burn').textContent = `${fmtUSD(opex)}/mo OpEx`;
       document.getElementById('exec-bom').textContent = fmtUSD(bom);
@@ -842,7 +883,6 @@
       document.getElementById('para-capital-strategy').innerHTML =
         `Combining <strong class="text-emerald-400">${bomOptPct}% BOM optimization</strong> with <strong class="text-emerald-400">${depositPct}% upfront customer deposits</strong> elevates Month 12 real bank cash to <strong class="text-emerald-400">${fmtUSD(cfoCash)}</strong>—unlocking <strong class="text-emerald-400">${fmtUSD(unlocked)}</strong> in internal liquidity (equivalent to <strong class="text-emerald-400">${equitySaved.toFixed(2)}% founder equity</strong> at a $${valuationM}M reference valuation). Layering a RaaS subscription model (${payback.toFixed(1)}-month BOM payback, ${fmtUSD(raasLTV)} LTV) further maximizes recurring revenue efficiency.`;
 
-      // Update Tab 2 & 3 KPIs
       document.getElementById('kpi-margin').textContent = `${margin.toFixed(1)}%`;
       document.getElementById('kpi-margin-opt').textContent = `${optMargin.toFixed(1)}% Optimized`;
       document.getElementById('kpi-breakeven').textContent = grossProfit > 0 ? `${breakeven.toFixed(1)}/mo` : 'N/A';
