@@ -98,13 +98,14 @@
       </div>
     </div>
 
-    <!-- 5-Module Legally Safe Navigation Tabs -->
+    <!-- 6-Module Legally Safe Navigation Tabs -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-6 text-xs font-medium overflow-x-auto">
       <button onclick="switchTab('executive')" id="btn-executive" class="py-3 tab-active whitespace-nowrap transition-colors">01. Executive Board Memo</button>
       <button onclick="switchTab('simulator')" id="btn-simulator" class="py-3 tab-inactive whitespace-nowrap transition-colors">02. Capital & Runway Engine</button>
       <button onclick="switchTab('economics')" id="btn-economics" class="py-3 tab-inactive whitespace-nowrap transition-colors">03. BOM & Raw Materials</button>
       <button onclick="switchTab('strategy')" id="btn-strategy" class="py-3 tab-inactive whitespace-nowrap transition-colors">04. RaaS & Business Strategy</button>
-      <button onclick="switchTab('deliverables')" id="btn-deliverables" class="py-3 tab-inactive whitespace-nowrap transition-colors">05. A-to-Z Desk & Pricing</button>
+      <button onclick="switchTab('capitaldeck')" id="btn-capitaldeck" class="py-3 tab-inactive whitespace-nowrap transition-colors">05. Bank Loan & VC Deck</button>
+      <button onclick="switchTab('deliverables')" id="btn-deliverables" class="py-3 tab-inactive whitespace-nowrap transition-colors">06. A-to-Z Desk & Pricing</button>
     </div>
   </header>
 
@@ -118,7 +119,7 @@
         <div>
           <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Management Reporting // Live FP&A Telemetry</p>
           <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Executive Financial & Strategic Dashboard</h1>
-          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">An internal management synthesis of cash runway, supply chain working capital, unit economics, and RaaS monetization. All narratives auto-update from Tabs 02–04.</p>
+          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">An internal management synthesis of cash runway, supply chain working capital, unit economics, and VC/bank readiness. All narratives auto-update from Tabs 02–05.</p>
         </div>
         <div class="flex items-center space-x-3 no-print">
           <button onclick="switchTab('simulator')" class="px-3.5 py-2 rounded text-xs font-mono border border-emerald-500/30 bg-emerald-950/20 text-emerald-400 hover:bg-emerald-950/40 transition-colors">
@@ -145,7 +146,7 @@
         <div class="p-4 rounded-lg border border-borderSubtle bg-surface print-card">
           <p class="text-[10px] font-mono text-zinc-400 uppercase">Lowest Cash Trough</p>
           <p id="exec-trough" class="text-xl font-mono font-semibold text-zinc-100 mt-1">$1,421,090</p>
-          <p class="text-[11px] font-mono text-zinc-500 mt-1">Real Bank Minimum</p>
+          <p id="exec-dscr-badge" class="text-[11px] font-mono text-emerald-400 mt-1">Bank DSCR: 2.45x</p>
         </div>
         <div class="p-4 rounded-lg border border-rose-500/30 bg-rose-950/10 print-card">
           <p class="text-[10px] font-mono text-rose-400 uppercase">Trapped Capital</p>
@@ -187,8 +188,8 @@
 
         <div class="p-6 rounded-lg border border-emerald-500/30 bg-emerald-950/10 space-y-3 print-card">
           <div class="flex items-center justify-between border-b border-emerald-500/20 pb-3">
-            <h2 class="text-xs font-mono uppercase tracking-wider text-emerald-400">04 // RaaS Monetization & Capital Efficiency</h2>
-            <span class="text-[10px] font-mono text-emerald-500/80">STRATEGIC OUTLOOK</span>
+            <h2 class="text-xs font-mono uppercase tracking-wider text-emerald-400">04 // VC Deck & Bank Debt Readiness</h2>
+            <span class="text-[10px] font-mono text-emerald-500/80">CAPITAL PACKAGES</span>
           </div>
           <p id="para-capital-strategy" class="text-sm text-zinc-300 leading-relaxed print-text"></p>
         </div>
@@ -546,7 +547,141 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- TAB 5: A-TO-Z FP&A DESK & PRICING          -->
+    <!-- TAB 5: BANK LOAN & VC PITCH DECK BUILDER   -->
+    <!-- ========================================== -->
+    <section id="tab-capitaldeck" class="hidden space-y-8">
+      <div class="border-b border-borderSubtle pb-5">
+        <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Institutional Financial Packages // Legally Compliant FP&A</p>
+        <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">US Bank Debt DSCR & VC Pitch Deck Financial Builder</h1>
+        <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Generate institutional-grade financial schedules for your US commercial bank loan application or Series A venture capital pitch deck—100% founder-presented.</p>
+      </div>
+
+      <!-- SECTION A: BANK / EQUIPMENT LOAN DSCR SIMULATOR -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-5 p-6 rounded-lg border border-borderSubtle bg-surface space-y-4">
+          <div class="flex items-center justify-between border-b border-borderSubtle pb-3">
+            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-200">01 // US Bank & Equipment Loan Package</h2>
+            <span class="text-[10px] font-mono text-emerald-400">DSCR UNDERWRITING</span>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1.5">
+              <label class="text-zinc-400">Equipment / Venture Loan Principal</label>
+              <span id="val-loan-amt" class="font-mono text-zinc-100">$750,000</span>
+            </div>
+            <input id="in-loan-amt" type="range" min="100000" max="5000000" step="50000" value="750000" class="w-full" oninput="recalc()" />
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1.5">
+              <label class="text-zinc-400">Annual Interest Rate (APR %)</label>
+              <span id="val-loan-apr" class="font-mono text-zinc-100">9.5%</span>
+            </div>
+            <input id="in-loan-apr" type="range" min="5" max="18" step="0.5" value="9.5" class="w-full" oninput="recalc()" />
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1.5">
+              <label class="text-zinc-400">Amortization Term (Months)</label>
+              <span id="val-loan-term" class="font-mono text-zinc-100">36 Months</span>
+            </div>
+            <input id="in-loan-term" type="range" min="12" max="60" step="6" value="36" class="w-full" oninput="recalc()" />
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="p-5 rounded-lg border border-borderSubtle bg-surface">
+              <p class="text-[10px] font-mono text-zinc-400 uppercase">Monthly Debt Service</p>
+              <p id="out-loan-emi" class="text-2xl font-mono font-semibold text-zinc-100 mt-1.5">$24,025/mo</p>
+              <p id="out-loan-annual" class="text-[11px] font-mono text-zinc-500 mt-1">$288,296 Annual P&I</p>
+            </div>
+            <div class="p-5 rounded-lg border border-emerald-500/30 bg-emerald-950/10">
+              <p class="text-[10px] font-mono text-emerald-400 uppercase">Year 1 Bank DSCR</p>
+              <p id="out-loan-dscr" class="text-2xl font-mono font-semibold text-emerald-400 mt-1.5">2.45x</p>
+              <p id="out-loan-status" class="text-[11px] font-mono text-emerald-300/80 mt-1">BANKABLE (>1.25x Req)</p>
+            </div>
+            <div class="p-5 rounded-lg border border-borderSubtle bg-surface">
+              <p class="text-[10px] font-mono text-zinc-400 uppercase">Total Interest Cost</p>
+              <p id="out-loan-interest" class="text-2xl font-mono font-semibold text-zinc-100 mt-1.5">$114,888</p>
+              <p class="text-[11px] font-mono text-zinc-500 mt-1">0.00% Equity Dilution</p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-lg border border-borderSubtle bg-surface space-y-2">
+            <h3 class="text-xs font-mono uppercase tracking-wider text-zinc-300">What BizFin Prepares for Your US Bank Application:</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-zinc-400 pt-1">
+              <div class="flex items-center space-x-2"><span class="text-emerald-400 font-mono">✓</span><span>36-Month Cash Flow & DSCR Coverage Schedule</span></div>
+              <div class="flex items-center space-x-2"><span class="text-emerald-400 font-mono">✓</span><span>Equipment Collateral & BOM Asset Schedule</span></div>
+              <div class="flex items-center space-x-2"><span class="text-emerald-400 font-mono">✓</span><span>Historical Burn vs. Gross Margin Bridge</span></div>
+              <div class="flex items-center space-x-2"><span class="text-emerald-400 font-mono">✓</span><span>Clean Management P&L & Balance Sheet Export</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION B: VC PITCH DECK FINANCIAL SLIDE & USE OF FUNDS -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
+        <div class="lg:col-span-5 p-6 rounded-lg border border-borderSubtle bg-surface space-y-4">
+          <div class="flex items-center justify-between border-b border-borderSubtle pb-3">
+            <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-200">02 // VC Pitch Deck Financial Slide</h2>
+            <span class="text-[10px] font-mono text-emerald-400">USE OF FUNDS</span>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1.5">
+              <label class="text-zinc-400">Target Equity Raise (Seed+ / Series A)</label>
+              <span id="val-vc-raise" class="font-mono text-emerald-400">$4,000,000</span>
+            </div>
+            <input id="in-vc-raise" type="range" min="1000000" max="25000000" step="500000" value="4000000" class="w-full lever" oninput="recalc()" />
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1.5">
+              <label class="text-zinc-400">R&D & Robotics Engineering (%)</label>
+              <span id="val-vc-rd" class="font-mono text-zinc-100">45%</span>
+            </div>
+            <input id="in-vc-rd" type="range" min="20" max="70" step="5" value="45" class="w-full" oninput="recalc()" />
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1.5">
+              <label class="text-zinc-400">Manufacturing Inventory & BOM (%)</label>
+              <span id="val-vc-mfg" class="font-mono text-zinc-100">35%</span>
+            </div>
+            <input id="in-vc-mfg" type="range" min="10" max="60" step="5" value="35" class="w-full" oninput="recalc()" />
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 p-6 rounded-lg border border-borderSubtle bg-surface flex flex-col justify-between space-y-5">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-sm font-semibold text-zinc-100">VC Pitch Deck — Slide 11: Financial Projections & Use of Funds</h3>
+              <p class="text-xs text-zinc-400">Live investor-ready allocation & runway extension telemetry.</p>
+            </div>
+            <span id="out-vc-runway" class="px-3 py-1 rounded font-mono text-xs bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">+40.0 Mo Runway Added</span>
+          </div>
+
+          <!-- Visual Allocation Bar -->
+          <div class="space-y-2">
+            <div class="w-full h-4 rounded-full bg-obsidian overflow-hidden flex">
+              <div id="bar-rd" style="width: 45%" class="bg-emerald-500 h-full transition-all"></div>
+              <div id="bar-mfg" style="width: 35%" class="bg-zinc-300 h-full transition-all"></div>
+              <div id="bar-gtm" style="width: 20%" class="bg-zinc-600 h-full transition-all"></div>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-[11px] font-mono pt-1">
+              <div><span class="text-emerald-400">■ R&D Eng:</span> <span id="lbl-vc-rd" class="text-zinc-200">$1,800,000 (45%)</span></div>
+              <div><span class="text-zinc-300">■ Mfg & BOM:</span> <span id="lbl-vc-mfg" class="text-zinc-200">$1,400,000 (35%)</span></div>
+              <div><span class="text-zinc-500">■ GTM & Ops:</span> <span id="lbl-vc-gtm" class="text-zinc-200">$800,000 (20%)</span></div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-zinc-400 pt-3 border-t border-borderSubtle">
+            <div class="flex items-center space-x-2"><span class="text-emerald-400 font-mono">✓</span><span>3-Year P&L, Cash Flow & Headcount Model</span></div>
+            <div class="flex items-center space-x-2"><span class="text-emerald-400 font-mono">✓</span><span>Investor-Ready Pitch Deck Financial Slides</span></div>
+            <div class="flex items-center space-x-2"><span class="text-emerald-400 font-mono">✓</span><span>Unit Economics & RaaS Cohort Sensitivity</span></div>
+            <div class="flex items-center space-x-2"><span class="text-emerald-400 font-mono">✓</span><span>Organized Due Diligence Data Room Index</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 6: A-TO-Z FP&A DESK & PRICING          -->
     <!-- ========================================== -->
     <section id="tab-deliverables" class="hidden space-y-8">
       <div class="border-b border-borderSubtle pb-5">
@@ -562,25 +697,25 @@
             <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded text-[11px] font-mono bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
               <span>FOUNDING PARTNER PILOT // 75% OFF STANDARD RATE</span>
             </div>
-            <h2 class="text-2xl font-semibold text-zinc-100">Complete Robotics FP&A & Working Capital Suite</h2>
-            <p class="text-xs text-zinc-400 leading-relaxed">Built for US Seed & Series A hardware founders who want institutional-grade cash runway clarity, BOM costing, and RaaS modeling—without $250k/yr executive overhead.</p>
+            <h2 class="text-2xl font-semibold text-zinc-100">Complete Robotics FP&A, Bank & VC Financial Suite</h2>
+            <p class="text-xs text-zinc-400 leading-relaxed">Built for US Seed & Series A hardware founders who want institutional cash runway clarity, BOM costing, and investor/bank financial packages—without $250k/yr executive overhead.</p>
 
             <!-- Value Stack Breakdown -->
             <div class="pt-2 space-y-2.5 text-xs">
               <div class="flex items-center justify-between py-2 border-b border-borderSubtle/70">
                 <span class="text-zinc-200 flex items-center"><span class="text-emerald-400 mr-2 font-mono">✓</span>Custom 12-Month Cash Runway & Working Capital Model</span>
-                <span class="font-mono text-zinc-500">$350 value</span>
+                <span class="font-mono text-zinc-500">$300 value</span>
               </div>
               <div class="flex items-center justify-between py-2 border-b border-borderSubtle/70">
                 <span class="text-zinc-200 flex items-center"><span class="text-emerald-400 mr-2 font-mono">✓</span>Line-by-Line Raw Material (BOM) & Supplier Lead-Time Audit</span>
                 <span class="font-mono text-zinc-500">$250 value</span>
               </div>
               <div class="flex items-center justify-between py-2 border-b border-borderSubtle/70">
-                <span class="text-zinc-200 flex items-center"><span class="text-emerald-400 mr-2 font-mono">✓</span>CapEx vs. RaaS Unit Economics & Payback Strategy Blueprint</span>
-                <span class="font-mono text-zinc-500">$200 value</span>
+                <span class="text-zinc-200 flex items-center"><span class="text-emerald-400 mr-2 font-mono">✓</span>VC Pitch Deck Financial Slides & Bank Loan DSCR Package</span>
+                <span class="font-mono text-zinc-500">$250 value</span>
               </div>
               <div class="flex items-center justify-between py-2 border-b border-borderSubtle/70">
-                <span class="text-zinc-200 flex items-center"><span class="text-emerald-400 mr-2 font-mono">✓</span>Private Executive Board Memo Dashboard + Async Founder Memo</span>
+                <span class="text-zinc-200 flex items-center"><span class="text-emerald-400 mr-2 font-mono">✓</span>CapEx vs. RaaS Unit Economics + Executive Board Memo</span>
                 <span class="font-mono text-zinc-500">$200 value</span>
               </div>
             </div>
@@ -599,7 +734,7 @@
             </div>
 
             <div class="space-y-3">
-              <a href="mailto:connect.bizfin@gmail.com?subject=Claiming%20%24250%20Founding%20Partner%20FP%26A%20Suite%20(%241%2C000%20Value)&body=Hi%20BizFin%20Team%2C%0A%0AWe%20are%20a%20US%20robotics%20startup%20and%20would%20like%20to%20claim%20the%20%24250%20Founding%20Partner%20FP%26A%20%26%20Working%20Capital%20Suite%20(%241%2C000%20value).%0A%0ACompany%20Name%3A%20%0ACurrent%20Stage%20(Pre-Seed%2FSeed%2FSeries%20A)%3A%20"
+              <a href="mailto:connect.bizfin@gmail.com?subject=Claiming%20%24250%20Founding%20Partner%20FP%26A%20%26%20Deck%20Suite%20(%241%2C000%20Value)&body=Hi%20BizFin%20Team%2C%0A%0AWe%20are%20a%20US%20robotics%20startup%20and%20would%20like%20to%20claim%20the%20%24250%20Founding%20Partner%20FP%26A%2C%20VC%20Deck%20%26%20Bank%20Package%20Suite%20(%241%2C000%20value).%0A%0ACompany%20Name%3A%20%0ACurrent%20Stage%20(Pre-Seed%2FSeed%2FSeries%20A)%3A%20"
                  class="block w-full py-3 px-4 rounded text-center text-xs font-semibold bg-emerald-500 text-obsidian hover:bg-emerald-400 transition-colors">
                 Claim $250 Founding Offer →
               </a>
@@ -644,13 +779,13 @@
             <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-800 text-zinc-300">PHASE 03 // DAYS 61–90+</span>
             <h3 class="text-base font-semibold text-zinc-100 mt-3">Scale & Investor Readiness</h3>
             <ul class="mt-4 space-y-2.5 text-xs text-zinc-400">
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Investor-Ready Financial Data Room & Board Slides</span></li>
-              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>RaaS Fleet Unit Economics & Factory Scaling Scenarios</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>VC Pitch Deck Financial Slides & Data Room Index</span></li>
+              <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>US Bank Loan DSCR & Equipment Financing Schedules</span></li>
               <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Clean data handoff & coordination with your US CPA</span></li>
               <li class="flex items-start space-x-2"><span class="text-emerald-400">—</span><span>Ongoing Flat-Fee Monthly Strategic FP&A Retainer</span></li>
             </ul>
           </div>
-          <div class="mt-6 pt-4 border-t border-borderSubtle text-[11px] font-mono text-zinc-500">DELIVERABLE: SERIES A FINANCIAL READINESS</div>
+          <div class="mt-6 pt-4 border-t border-borderSubtle text-[11px] font-mono text-zinc-500">DELIVERABLE: VC & BANK FINANCIAL READINESS</div>
         </div>
       </div>
     </section>
@@ -663,7 +798,7 @@
         <a href="mailto:connect.bizfin@gmail.com" class="hover:text-zinc-200 transition-colors">connect.bizfin@gmail.com</a>
       </div>
       <p class="text-[10px] text-zinc-600 leading-relaxed">
-        <strong>Disclaimer:</strong> BizFin provides Financial Planning & Analysis (FP&A), financial modeling, unit economics analysis, and strategic management consulting. BizFin is not a licensed Certified Public Accounting (CPA) firm, law firm, registered investment advisor, or FINRA broker-dealer, and does not provide statutory audits, tax preparation, legal advice, or securities brokerage services. Clients should consult their licensed US CPA and legal counsel for tax filings, statutory compliance, and legal matters.
+        <strong>Disclaimer:</strong> BizFin provides Financial Planning & Analysis (FP&A), financial modeling, pitch deck financial schedules, and strategic management consulting on a flat-fee basis. BizFin is not a licensed Certified Public Accounting (CPA) firm, law firm, registered investment advisor, or FINRA broker-dealer, and does not provide statutory audits, tax preparation, legal advice, investment solicitation, or securities brokerage services. Founders present all materials independently and should consult their licensed US CPA and legal counsel for tax, compliance, and legal matters.
       </p>
     </div>
   </footer>
@@ -689,7 +824,7 @@
     };
 
     function switchTab(tabId) {
-      ['executive', 'simulator', 'economics', 'strategy', 'deliverables'].forEach(t => {
+      ['executive', 'simulator', 'economics', 'strategy', 'capitaldeck', 'deliverables'].forEach(t => {
         document.getElementById('tab-' + t).classList.toggle('hidden', t !== tabId);
         const btn = document.getElementById('btn-' + t);
         btn.classList.toggle('tab-active', t === tabId);
@@ -817,6 +952,7 @@
       let cfoCash = startCash;
       let minRealCash = startCash;
       let troughMonth = "Month 01";
+      let totalYear1GrossProfit = 0;
       ledgerData = [];
 
       const labels = [], paperArr = [], realArr = [], cfoArr = [];
@@ -825,6 +961,7 @@
         const units = salesSchedule[i];
         const advUnits = extendedSales[i + leadMo];
         const rev = units * price;
+        totalYear1GrossProfit += (rev - units * bom);
 
         paperCash += (rev - units * bom - opex);
         realCash += (rev - advUnits * bom - opex);
@@ -853,6 +990,57 @@
         });
       }
 
+      // Bank Loan DSCR Calculations
+      const loanAmt = +document.getElementById('in-loan-amt').value;
+      const loanApr = +document.getElementById('in-loan-apr').value;
+      const loanTerm = +document.getElementById('in-loan-term').value;
+      const rMonthly = (loanApr / 100) / 12;
+      const emi = rMonthly > 0 ? (loanAmt * rMonthly) / (1 - Math.pow(1 + rMonthly, -loanTerm)) : (loanAmt / loanTerm);
+      const annualDebtService = emi * 12;
+      const totalInterest = (emi * loanTerm) - loanAmt;
+      const dscr = annualDebtService > 0 ? (Math.max(0, totalYear1GrossProfit) / annualDebtService) : 0;
+
+      document.getElementById('val-loan-amt').textContent = fmtUSD(loanAmt);
+      document.getElementById('val-loan-apr').textContent = `${loanApr.toFixed(1)}%`;
+      document.getElementById('val-loan-term').textContent = `${loanTerm} Months`;
+      document.getElementById('out-loan-emi').textContent = `${fmtUSD(emi)}/mo`;
+      document.getElementById('out-loan-annual').textContent = `${fmtUSD(annualDebtService)} Annual P&I`;
+      document.getElementById('out-loan-dscr').textContent = `${dscr.toFixed(2)}x`;
+      document.getElementById('out-loan-interest').textContent = fmtUSD(totalInterest);
+
+      const dscrStatusEl = document.getElementById('out-loan-status');
+      const dscrEl = document.getElementById('out-loan-dscr');
+      if (dscr >= 1.25) {
+        dscrStatusEl.textContent = 'BANKABLE (>1.25x Req)';
+        dscrStatusEl.className = 'text-[11px] font-mono text-emerald-300/80 mt-1';
+        dscrEl.className = 'text-2xl font-mono font-semibold text-emerald-400 mt-1.5';
+      } else {
+        dscrStatusEl.textContent = 'BELOW 1.25x THRESHOLD';
+        dscrStatusEl.className = 'text-[11px] font-mono text-rose-400 mt-1';
+        dscrEl.className = 'text-2xl font-mono font-semibold text-rose-400 mt-1.5';
+      }
+
+      // VC Pitch Deck Use of Funds Calculations
+      const vcRaise = +document.getElementById('in-vc-raise').value;
+      const vcRdPct = +document.getElementById('in-vc-rd').value;
+      let vcMfgPct = +document.getElementById('in-vc-mfg').value;
+      if (vcRdPct + vcMfgPct > 95) vcMfgPct = 95 - vcRdPct;
+      const vcGtmPct = 100 - vcRdPct - vcMfgPct;
+      const addedRunwayMo = opex > 0 ? (vcRaise / opex) : 0;
+
+      document.getElementById('val-vc-raise').textContent = fmtUSD(vcRaise);
+      document.getElementById('val-vc-rd').textContent = `${vcRdPct}%`;
+      document.getElementById('val-vc-mfg').textContent = `${vcMfgPct}%`;
+      document.getElementById('out-vc-runway').textContent = `+${addedRunwayMo.toFixed(1)} Mo Runway Added`;
+
+      document.getElementById('bar-rd').style.width = `${vcRdPct}%`;
+      document.getElementById('bar-mfg').style.width = `${vcMfgPct}%`;
+      document.getElementById('bar-gtm').style.width = `${vcGtmPct}%`;
+
+      document.getElementById('lbl-vc-rd').textContent = `${fmtUSD(vcRaise * vcRdPct / 100)} (${vcRdPct}%)`;
+      document.getElementById('lbl-vc-mfg').textContent = `${fmtUSD(vcRaise * vcMfgPct / 100)} (${vcMfgPct}%)`;
+      document.getElementById('lbl-vc-gtm').textContent = `${fmtUSD(vcRaise * vcGtmPct / 100)} (${vcGtmPct}%)`;
+
       const trapped = realCash - paperCash;
       const unlocked = cfoCash - realCash;
       const equitySaved = Math.max(0, (unlocked / (valuationM * 1000000)) * 100);
@@ -861,11 +1049,13 @@
       const annualBomSavings = (bom - optBom) * totalUnits;
       const bottleneckItem = bomItems.reduce((prev, curr) => (curr.lead > prev.lead ? curr : prev), bomItems[0]);
 
+      // Update Tab 1 Executive Dashboard
       document.getElementById('exec-start-cash').textContent = fmtUSD(startCash);
       document.getElementById('exec-burn').textContent = `${fmtUSD(opex)}/mo OpEx`;
       document.getElementById('exec-bom').textContent = fmtUSD(bom);
       document.getElementById('exec-margin').textContent = `${margin.toFixed(1)}% Gross Margin`;
       document.getElementById('exec-trough').textContent = fmtUSD(minRealCash);
+      document.getElementById('exec-dscr-badge').textContent = `Bank DSCR: ${dscr.toFixed(2)}x`;
       document.getElementById('exec-trapped').textContent = fmtUSD(trapped);
       document.getElementById('exec-lead-lbl').textContent = `${leadMo * 30}-Day Supplier Lag`;
       document.getElementById('exec-unlocked').textContent = (unlocked >= 0 ? '+' : '') + fmtUSD(unlocked);
@@ -881,8 +1071,9 @@
         `Current hardware economics deliver a <strong class="text-zinc-100">${margin.toFixed(1)}% Gross Margin</strong> (${fmtUSD(grossProfit)}/unit on a ${fmtUSD(bom)} BOM across ${bomItems.length} raw materials). Compressing BOM by <strong class="text-emerald-400">${bomOptPct}%</strong> to <strong class="text-emerald-400">${fmtUSD(optBom)}</strong> via supplier volume tiering expands Gross Margin to <strong class="text-emerald-400">${optMargin.toFixed(1)}%</strong>, adding <strong class="text-emerald-400">+${fmtUSD(annualBomSavings)}</strong> in Year 1 gross profit.`;
 
       document.getElementById('para-capital-strategy').innerHTML =
-        `Combining <strong class="text-emerald-400">${bomOptPct}% BOM optimization</strong> with <strong class="text-emerald-400">${depositPct}% upfront customer deposits</strong> elevates Month 12 real bank cash to <strong class="text-emerald-400">${fmtUSD(cfoCash)}</strong>—unlocking <strong class="text-emerald-400">${fmtUSD(unlocked)}</strong> in internal liquidity (equivalent to <strong class="text-emerald-400">${equitySaved.toFixed(2)}% founder equity</strong> at a $${valuationM}M reference valuation). Layering a RaaS subscription model (${payback.toFixed(1)}-month BOM payback, ${fmtUSD(raasLTV)} LTV) further maximizes recurring revenue efficiency.`;
+        `Unlocking <strong class="text-emerald-400">${fmtUSD(unlocked)}</strong> via BOM compression and <strong class="text-emerald-400">${depositPct}% customer deposits</strong> protects <strong class="text-emerald-400">${equitySaved.toFixed(2)}% in founder equity</strong>. For external capital, Year 1 gross cash generation supports a <strong class="text-zinc-100">${dscr.toFixed(2)}x DSCR</strong> on a ${fmtUSD(loanAmt)} equipment facility, while a <strong class="text-emerald-400">${fmtUSD(vcRaise)}</strong> equity round extends operational runway by <strong class="text-emerald-400">+${addedRunwayMo.toFixed(1)} months</strong>.`;
 
+      // Update Tab 2 & 3 KPIs
       document.getElementById('kpi-margin').textContent = `${margin.toFixed(1)}%`;
       document.getElementById('kpi-margin-opt').textContent = `${optMargin.toFixed(1)}% Optimized`;
       document.getElementById('kpi-breakeven').textContent = grossProfit > 0 ? `${breakeven.toFixed(1)}/mo` : 'N/A';
