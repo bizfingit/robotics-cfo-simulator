@@ -94,10 +94,10 @@
     </div>
 
     <!-- Navigation Tabs -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-8 text-xs font-medium">
-      <button onclick="switchTab('simulator')" id="btn-simulator" class="py-3 tab-active transition-colors">01. Capital & Runway Engine</button>
-      <button onclick="switchTab('economics')" id="btn-economics" class="py-3 tab-inactive transition-colors">02. BOM & Dilution Impact</button>
-      <button onclick="switchTab('deliverables')" id="btn-deliverables" class="py-3 tab-inactive transition-colors">03. Engagement Architecture (A-to-Z)</button>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-8 text-xs font-medium overflow-x-auto">
+      <button onclick="switchTab('simulator')" id="btn-simulator" class="py-3 tab-active whitespace-nowrap transition-colors">01. Capital & Runway Engine</button>
+      <button onclick="switchTab('economics')" id="btn-economics" class="py-3 tab-inactive whitespace-nowrap transition-colors">02. BOM & Raw Material Costing</button>
+      <button onclick="switchTab('deliverables')" id="btn-deliverables" class="py-3 tab-inactive whitespace-nowrap transition-colors">03. Engagement Architecture (A-to-Z)</button>
     </div>
   </header>
 
@@ -111,10 +111,15 @@
           <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Working Capital & Runway Stress-Test</h1>
           <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Quantify how supplier lead times trap bank liquidity during hardware scaling—and model the exact cash unlocked via BizFin financial engineering.</p>
         </div>
-        <button onclick="downloadCSV()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded text-xs font-mono border border-borderSubtle bg-surface text-zinc-300 hover:text-zinc-100 hover:border-zinc-500 transition-colors">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-          <span>Export 12-Mo Ledger (.CSV)</span>
-        </button>
+        <div class="flex items-center space-x-3">
+          <button onclick="switchTab('economics')" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded text-xs font-mono border border-emerald-500/30 bg-emerald-950/20 text-emerald-400 hover:bg-emerald-950/40 transition-colors">
+            <span>Edit Raw Materials (BOM)</span>
+          </button>
+          <button onclick="downloadCSV()" class="inline-flex items-center space-x-2 px-3.5 py-2 rounded text-xs font-mono border border-borderSubtle bg-surface text-zinc-300 hover:text-zinc-100 hover:border-zinc-500 transition-colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            <span>Export Ledger (.CSV)</span>
+          </button>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -124,7 +129,7 @@
           <div class="p-5 rounded-lg border border-borderSubtle bg-surface space-y-4">
             <div class="flex items-center justify-between border-b border-borderSubtle pb-3">
               <h2 class="text-xs font-mono uppercase tracking-wider text-zinc-300">Baseline Parameters</h2>
-              <span class="text-[10px] font-mono text-zinc-500">STATUS QUO</span>
+              <span class="text-[10px] font-mono text-emerald-400">AUTO-SYNCED WITH BOM</span>
             </div>
 
             <div>
@@ -137,10 +142,10 @@
 
             <div>
               <div class="flex justify-between text-xs mb-1.5">
-                <label class="text-zinc-400">Unit Cost / BOM</label>
+                <label class="text-zinc-400">Unit Cost / BOM <span class="text-[10px] text-zinc-500">(From Tab 02)</span></label>
                 <span id="val-bom" class="font-mono text-zinc-100">$6,870</span>
               </div>
-              <input id="in-bom" type="range" min="1500" max="20000" step="100" value="6870" class="w-full" oninput="recalc()" />
+              <input id="in-bom" type="range" min="1000" max="30000" step="50" value="6870" class="w-full" oninput="recalc()" />
             </div>
 
             <div>
@@ -161,7 +166,7 @@
 
             <div>
               <div class="flex justify-between text-xs mb-1.5">
-                <label class="text-zinc-400">Supplier Lead Time</label>
+                <label class="text-zinc-400">Max Supplier Lead Time</label>
                 <span id="val-lead" class="font-mono text-rose-400">60 Days (2 Mo)</span>
               </div>
               <input id="in-lead" type="range" min="0" max="3" step="1" value="2" class="w-full" oninput="recalc()" />
@@ -278,32 +283,96 @@
       </div>
     </section>
 
-    <!-- TAB 2: BOM & DILUTION IMPACT -->
+    <!-- TAB 2: BOM & RAW MATERIAL COSTING BUILDER -->
     <section id="tab-economics" class="hidden space-y-6">
-      <div class="border-b border-borderSubtle pb-5">
-        <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Unit Economics & Cap Table Protection</p>
-        <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">BOM Engineering & Non-Dilutive Capital Impact</h1>
-        <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Every dollar saved in Bill of Materials or unlocked from supplier payment terms directly protects founder equity ahead of Series A.</p>
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-borderSubtle pb-5">
+        <div>
+          <p class="font-mono text-[11px] text-emerald-400 uppercase tracking-widest mb-1">Interactive Bill of Materials (BOM) Engine</p>
+          <h1 class="text-2xl font-semibold tracking-tight text-zinc-100">Raw Material Selection & Unit Costing</h1>
+          <p class="text-sm text-zinc-400 mt-1 max-w-2xl">Select robotics raw materials, adjust quantities, unit costs, and supplier lead times. Totals automatically sync with your 12-Month Cash Runway engine.</p>
+        </div>
+        <button onclick="switchTab('simulator')" class="px-3.5 py-2 rounded text-xs font-mono bg-zinc-100 text-obsidian hover:bg-zinc-200 transition-colors">
+          View Impact on Runway →
+        </button>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="p-6 rounded-lg border border-borderSubtle bg-surface">
-          <p class="text-xs font-mono text-zinc-400 uppercase">Current Unit BOM</p>
-          <p id="econ-bom-curr" class="text-3xl font-mono font-semibold text-zinc-100 mt-2">$6,870</p>
-          <p class="text-xs text-zinc-500 mt-2">Includes Actuators, LiDAR, Vision, Battery, Chassis & Labor.</p>
+      <!-- Summary KPIs -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="p-5 rounded-lg border border-borderSubtle bg-surface">
+          <p class="text-[11px] font-mono text-zinc-400 uppercase">Total Unit BOM Cost</p>
+          <p id="econ-bom-curr" class="text-2xl font-mono font-semibold text-zinc-100 mt-1.5">$6,870</p>
+          <p class="text-[11px] font-mono text-zinc-500 mt-1">Live Sum of Materials</p>
         </div>
-        <div class="p-6 rounded-lg border border-emerald-500/30 bg-surface">
-          <p class="text-xs font-mono text-emerald-400 uppercase">Target Optimized BOM</p>
-          <p id="econ-bom-opt" class="text-3xl font-mono font-semibold text-emerald-400 mt-2">$5,840</p>
-          <p id="econ-bom-annual" class="text-xs font-mono text-emerald-400/80 mt-2">+$121,599 Annual Pure Profit</p>
+        <div class="p-5 rounded-lg border border-emerald-500/30 bg-surface">
+          <p class="text-[11px] font-mono text-emerald-400 uppercase">Target Optimized BOM</p>
+          <p id="econ-bom-opt" class="text-2xl font-mono font-semibold text-emerald-400 mt-1.5">$5,840</p>
+          <p id="econ-bom-annual" class="text-[11px] font-mono text-emerald-400/80 mt-1">+$121,599 Annual Profit</p>
         </div>
-        <div class="p-6 rounded-lg border border-borderSubtle bg-surface">
-          <p class="text-xs font-mono text-zinc-400 uppercase">Founder Equity Protected</p>
-          <p id="econ-equity" class="text-3xl font-mono font-semibold text-zinc-100 mt-2">4.31%</p>
-          <p class="text-xs text-zinc-500 mt-2">Equivalent dilution avoided by unlocking internal working capital.</p>
+        <div class="p-5 rounded-lg border border-rose-500/30 bg-surface">
+          <p class="text-[11px] font-mono text-rose-400 uppercase">Bottleneck Lead Time</p>
+          <p id="econ-max-lead" class="text-2xl font-mono font-semibold text-rose-400 mt-1.5">60 Days</p>
+          <p class="text-[11px] font-mono text-zinc-500 mt-1">Longest Supplier Wait</p>
+        </div>
+        <div class="p-5 rounded-lg border border-borderSubtle bg-surface">
+          <p class="text-[11px] font-mono text-zinc-400 uppercase">Founder Equity Protected</p>
+          <p id="econ-equity" class="text-2xl font-mono font-semibold text-zinc-100 mt-1.5">4.31%</p>
+          <p class="text-[11px] font-mono text-zinc-500 mt-1">Dilution Avoided</p>
         </div>
       </div>
 
+      <!-- Interactive Raw Material Builder Card -->
+      <div class="rounded-lg border border-borderSubtle bg-surface overflow-hidden">
+        <div class="px-5 py-4 border-b border-borderSubtle flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h3 class="text-xs font-mono uppercase tracking-wider text-zinc-200">Raw Material & Component Costing Matrix</h3>
+            <p class="text-[11px] text-zinc-500 mt-0.5">Add multiple raw materials or select from industry-standard robotics components.</p>
+          </div>
+          <!-- Quick Add Selector -->
+          <div class="flex items-center space-x-2">
+            <select id="material-preset" class="bg-obsidian border border-borderSubtle text-zinc-200 text-xs font-mono rounded px-3 py-1.5 focus:outline-none focus:border-emerald-500">
+              <option value="Custom Raw Material|1|500|30">+ Custom Raw Material</option>
+              <option value="3D LiDAR Sensor (Solid-State)|1|1200|45">3D LiDAR Sensor ($1,200)</option>
+              <option value="Brushless DC Actuators|6|400|60">Brushless DC Actuators x6 ($2,400)</option>
+              <option value="Harmonic Drive Gearbox|4|350|75">Harmonic Drive Gearbox x4 ($1,400)</option>
+              <option value="NVIDIA Jetson Orin Compute|1|1100|45">NVIDIA Jetson Orin ($1,100)</option>
+              <option value="AI Stereo Vision Camera|2|325|30">AI Stereo Vision Camera x2 ($650)</option>
+              <option value="48V LiFePO4 Battery Pack|1|900|40">48V Battery Pack ($900)</option>
+              <option value="CNC Aluminum / Carbon Chassis|1|850|25">CNC Aluminum Chassis ($850)</option>
+              <option value="PCB, Wiring Harness & Connectors|1|420|35">PCB & Wiring Harness ($420)</option>
+              <option value="Direct Assembly Labor (Hours)|12|72.5|0">Direct Assembly Labor ($870)</option>
+            </select>
+            <button onclick="addMaterialFromPreset()" class="px-3.5 py-1.5 rounded text-xs font-mono font-medium bg-emerald-500 text-obsidian hover:bg-emerald-400 transition-colors shrink-0">
+              + Add Material
+            </button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-borderSubtle text-[11px] font-mono text-zinc-400 bg-obsidian/60">
+                <th class="py-2.5 px-4">Raw Material / Component</th>
+                <th class="py-2.5 px-4 w-28">Qty / Robot</th>
+                <th class="py-2.5 px-4 w-36">Unit Cost ($)</th>
+                <th class="py-2.5 px-4 w-36">Lead Time (Days)</th>
+                <th class="py-2.5 px-4 text-right w-36">Line Total ($)</th>
+                <th class="py-2.5 px-4 text-center w-16">Action</th>
+              </tr>
+            </thead>
+            <tbody id="bom-table-body" class="divide-y divide-borderSubtle/60 text-xs font-mono"></tbody>
+            <tfoot>
+              <tr class="bg-obsidian/80 border-t border-borderSubtle text-xs font-mono font-semibold">
+                <td class="py-3 px-4 text-zinc-200" colspan="3">TOTAL COST PER ROBOT (AUTO-SYNCED TO RUNWAY)</td>
+                <td id="bom-foot-lead" class="py-3 px-4 text-rose-400">Max: 60 Days</td>
+                <td id="bom-foot-total" class="py-3 px-4 text-right text-emerald-400">$6,870</td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <!-- Strategic Playbooks -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="p-6 rounded-lg border border-borderSubtle bg-surface space-y-4">
           <h3 class="text-sm font-semibold text-zinc-100 uppercase tracking-wide font-mono">Supply Chain Margin Playbook</h3>
@@ -407,6 +476,16 @@
     let ledgerData = [];
     let chartInstance = null;
 
+    // Initial Raw Materials List (Matches $6,870 Baseline & 60-day Max Lead Time)
+    let bomItems = [
+      { name: "3D LiDAR Sensor (Solid-State)", qty: 1, cost: 1200, lead: 45 },
+      { name: "Brushless DC Actuators", qty: 6, cost: 400, lead: 60 },
+      { name: "AI Stereo Vision Camera", qty: 2, cost: 325, lead: 30 },
+      { name: "48V LiFePO4 Battery Pack", qty: 1, cost: 900, lead: 40 },
+      { name: "CNC Aluminum Chassis", qty: 1, cost: 850, lead: 25 },
+      { name: "Direct Assembly Labor (Hours)", qty: 12, cost: 72.5, lead: 0 }
+    ];
+
     const fmtUSD = (n) => {
       const sign = n < 0 ? '-' : '';
       return sign + '$' + Math.abs(Math.round(n)).toLocaleString('en-US');
@@ -421,6 +500,86 @@
       });
     }
 
+    // --- BOM RAW MATERIAL BUILDER LOGIC ---
+    function renderBOMTable() {
+      const tbody = document.getElementById('bom-table-body');
+      tbody.innerHTML = bomItems.map((item, idx) => {
+        const lineTotal = item.qty * item.cost;
+        return `
+          <tr class="hover:bg-zinc-900/40 transition-colors">
+            <td class="py-2 px-4">
+              <input type="text" value="${item.name}" onchange="updateBOMItem(${idx}, 'name', this.value)"
+                class="w-full bg-transparent border border-transparent focus:border-zinc-700 focus:bg-obsidian rounded px-2 py-1 text-zinc-200 outline-none" />
+            </td>
+            <td class="py-2 px-4">
+              <input type="number" min="1" step="1" value="${item.qty}" oninput="updateBOMItem(${idx}, 'qty', this.value)"
+                class="w-20 bg-obsidian border border-borderSubtle focus:border-emerald-500 rounded px-2 py-1 text-zinc-200 outline-none" />
+            </td>
+            <td class="py-2 px-4">
+              <input type="number" min="0" step="10" value="${item.cost}" oninput="updateBOMItem(${idx}, 'cost', this.value)"
+                class="w-28 bg-obsidian border border-borderSubtle focus:border-emerald-500 rounded px-2 py-1 text-zinc-200 outline-none" />
+            </td>
+            <td class="py-2 px-4">
+              <input type="number" min="0" max="120" step="5" value="${item.lead}" oninput="updateBOMItem(${idx}, 'lead', this.value)"
+                class="w-24 bg-obsidian border border-borderSubtle focus:border-rose-500 rounded px-2 py-1 text-zinc-200 outline-none" />
+            </td>
+            <td class="py-2 px-4 text-right text-zinc-100 font-medium">${fmtUSD(lineTotal)}</td>
+            <td class="py-2 px-4 text-center">
+              <button onclick="removeBOMItem(${idx})" class="text-zinc-500 hover:text-rose-400 transition-colors px-2 py-1" title="Remove">✕</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      syncBOMToSimulator();
+    }
+
+    function updateBOMItem(idx, field, val) {
+      if (field === 'name') {
+        bomItems[idx].name = val;
+      } else {
+        bomItems[idx][field] = Math.max(0, parseFloat(val) || 0);
+      }
+      renderBOMTable();
+    }
+
+    function removeBOMItem(idx) {
+      if (bomItems.length <= 1) return;
+      bomItems.splice(idx, 1);
+      renderBOMTable();
+    }
+
+    function addMaterialFromPreset() {
+      const val = document.getElementById('material-preset').value;
+      const [name, qty, cost, lead] = val.split('|');
+      bomItems.push({
+        name,
+        qty: parseFloat(qty),
+        cost: parseFloat(cost),
+        lead: parseFloat(lead)
+      });
+      renderBOMTable();
+    }
+
+    function syncBOMToSimulator() {
+      const totalBOM = bomItems.reduce((sum, item) => sum + (item.qty * item.cost), 0);
+      const maxLeadDays = bomItems.reduce((max, item) => Math.max(max, item.lead), 0);
+      const leadMonths = Math.min(3, Math.round(maxLeadDays / 30));
+
+      document.getElementById('bom-foot-total').textContent = fmtUSD(totalBOM);
+      document.getElementById('bom-foot-lead').textContent = `Max: ${maxLeadDays} Days`;
+      document.getElementById('econ-max-lead').textContent = `${maxLeadDays} Days`;
+
+      // Sync to Tab 1 sliders
+      const bomSlider = document.getElementById('in-bom');
+      if (totalBOM > +bomSlider.max) bomSlider.max = Math.ceil(totalBOM / 1000) * 1000;
+      bomSlider.value = Math.round(totalBOM);
+      document.getElementById('in-lead').value = leadMonths;
+
+      recalc();
+    }
+
+    // --- CORE SIMULATOR ENGINE ---
     function recalc() {
       const startCash = +document.getElementById('in-cash').value;
       const bom = +document.getElementById('in-bom').value;
@@ -498,12 +657,12 @@
       // Tab 2 metrics
       document.getElementById('econ-bom-curr').textContent = fmtUSD(bom);
       document.getElementById('econ-bom-opt').textContent = fmtUSD(optBom);
-      document.getElementById('econ-bom-annual').textContent = `+${fmtUSD(annualBomSavings)} Annual Pure Profit`;
+      document.getElementById('econ-bom-annual').textContent = `+${fmtUSD(annualBomSavings)} Annual Profit`;
       document.getElementById('econ-equity').textContent = `${Math.max(0, equitySaved).toFixed(2)}%`;
 
       // Diagnostic text
       document.getElementById('diagnostic-text').innerHTML =
-        `<strong class="text-zinc-100">CFO Diagnostic:</strong> A <span class="font-mono text-rose-400">${leadMo * 30}-day</span> supplier lead time traps <span class="font-mono text-rose-400">${fmtUSD(Math.abs(trapped))}</span> in working capital by Month 12. Executing a <span class="font-mono text-emerald-400">${bomOptPct}% BOM reduction</span> alongside <span class="font-mono text-emerald-400">${depositPct}% upfront customer deposits</span> unlocks <span class="font-mono text-emerald-400">${fmtUSD(unlocked)}</span> in liquid bank cash—protecting <span class="font-mono text-zinc-100">${Math.max(0, equitySaved).toFixed(2)}%</span> in founder equity at a $${valuationM}M valuation.`;
+        `<strong class="text-zinc-100">CFO Diagnostic:</strong> With a <span class="font-mono text-zinc-100">${fmtUSD(bom)}</span> unit BOM and <span class="font-mono text-rose-400">${leadMo * 30}-day</span> supplier lead time, <span class="font-mono text-rose-400">${fmtUSD(Math.abs(trapped))}</span> is trapped in working capital by Month 12. Executing a <span class="font-mono text-emerald-400">${bomOptPct}% BOM reduction</span> alongside <span class="font-mono text-emerald-400">${depositPct}% upfront deposits</span> unlocks <span class="font-mono text-emerald-400">${fmtUSD(unlocked)}</span> in liquid cash—protecting <span class="font-mono text-zinc-100">${Math.max(0, equitySaved).toFixed(2)}%</span> in founder equity.`;
 
       // Table
       const tbody = document.getElementById('ledger-body');
@@ -575,7 +734,7 @@
       URL.revokeObjectURL(url);
     }
 
-    recalc();
+    renderBOMTable();
   </script>
 </body>
 </html>
